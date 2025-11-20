@@ -114,7 +114,7 @@
 
                             <!-- Cost Visualization Image -->
                             <div class="impact-image-container">
-                                <img src="data_cost.jpg" alt="Cost Breakdown Chart showing equipment and training costs for Paralympic athletes" class="impact-image">
+                                <img src="data_cost.jpg" alt="Cost Breakdown Chart showing equipment and training costs for Paralympic athletes" class="impact-image" id="costImage" style="cursor: pointer;">
                             </div>
 
                             <section class="featured-impact">
@@ -163,6 +163,15 @@
             <p>&copy; 2025 Redefining Ability. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Image Modal -->
+    <div class="image-modal" id="imageModal" aria-hidden="true">
+        <div class="image-modal-content">
+            <button class="modal-close" id="closeImageModal" aria-label="Close image">&times;</button>
+            <img src="data_cost.jpg" alt="Cost Breakdown Chart showing equipment and training costs for Paralympic athletes" id="modalImage">
+        </div>
+        <div class="modal-backdrop"></div>
+    </div>
 
     <!-- Accessibility Button - Bottom Right -->
     <button class="accessibility-toggle-fixed" id="accessibilityToggle" aria-label="Accessibility options" aria-haspopup="true" aria-expanded="false">
@@ -244,6 +253,41 @@
                     currentLangSpan.textContent = currentLanguage;
                     localStorage.setItem('siteLanguage', currentLanguage);
                     translateDonatePage(currentLanguage);
+                });
+            }
+
+            // Image Modal functionality
+            const costImage = document.getElementById('costImage');
+            const imageModal = document.getElementById('imageModal');
+            const closeImageModal = document.getElementById('closeImageModal');
+            const modalBackdrop = imageModal?.querySelector('.modal-backdrop');
+
+            if (costImage && imageModal) {
+                costImage.addEventListener('click', () => {
+                    imageModal.classList.add('open');
+                    imageModal.setAttribute('aria-hidden', 'false');
+                    document.body.style.overflow = 'hidden';
+                });
+
+                function closeModal() {
+                    imageModal.classList.remove('open');
+                    imageModal.setAttribute('aria-hidden', 'true');
+                    document.body.style.overflow = '';
+                }
+
+                if (closeImageModal) {
+                    closeImageModal.addEventListener('click', closeModal);
+                }
+
+                if (modalBackdrop) {
+                    modalBackdrop.addEventListener('click', closeModal);
+                }
+
+                // Close on Escape key
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && imageModal.classList.contains('open')) {
+                        closeModal();
+                    }
                 });
             }
 

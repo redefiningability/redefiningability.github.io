@@ -380,14 +380,34 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 
-    // Mobile navigation toggle
-    const navToggle = document.getElementById('navToggle');
-    const navMenu = document.getElementById('navMenu');
-    if (navToggle && navMenu) {
-        navToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            navToggle.classList.toggle('active');
-        });
+    // Mobile navigation toggle - only on index.html, not donate.html
+    const isDonatePage = window.location.pathname.includes('donate.html');
+    if (!isDonatePage) {
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        function closeMobileMenu() {
+            if (navMenu) navMenu.classList.remove('active');
+            if (navToggle) navToggle.classList.remove('active');
+        }
+        
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                navToggle.classList.toggle('active');
+            });
+            
+            // Close menu when clicking nav links
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    // Small delay to allow smooth scroll to work
+                    setTimeout(() => {
+                        closeMobileMenu();
+                    }, 100);
+                });
+            });
+        }
     }
 
     // Update active nav link on scroll

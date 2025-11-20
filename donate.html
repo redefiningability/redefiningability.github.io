@@ -108,14 +108,46 @@
                                 </div>
                             </section>
 
-
-
-
-
-
-
                         </div>
                     </section>
+
+                    <!-- Concept button---Join--section -->
+                    <section class="post-donate-access">
+                        <div class="container">
+                            <h3>Be More Than a Donor</h3>
+                            <p>After donating, supporters can join our community to participate in events,
+                                volunteer programs, and live Paralympic experiences.</p>
+
+                            <button id="conceptBtn" class="access-btn">
+                                View Community Concept
+                            </button>
+                        </div>
+                    </section>
+
+                    <!-- Concept Popup Modal -->
+                    <div id="conceptModal" class="modal">
+                        <div class="modal-content">
+                            <span id="closeModal" class="close">&times;</span>
+                            <h2>Supporter Community – Concept Plan</h2>
+                            <p>
+                                Our goal is to build a Europe-wide community of Paralympic supporters.
+                                This community will:
+                            </p>
+                            <ul>
+                                <li>🌟 Join a dedicated WhatsApp supporter group</li>
+                                <li>🤝 Receive volunteer opportunities (events, trainings, rehab support)</li>
+                                <li>🎉 Attend competitions together as a fan group</li>
+                                <li>🎥 Access behind-the-scenes stories and athlete interviews</li>
+                                <li>📣 Participate in awareness campaigns to redefine disability</li>
+                                <li>🚌 Organize supporter trips for major competitions</li>
+                            </ul>
+                            <p>
+                                This feature is part of our long-term vision to transform support
+                                from a donation into a movement of visibility, community, and action.
+                            </p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -130,7 +162,7 @@
     <script src="script.js"></script>
     <script>
         // Wait for DOM to be ready
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Initialize donate page
             if (typeof content !== 'undefined' && content.donatePage) {
                 const donateTitle = document.getElementById('donateTitle');
@@ -142,26 +174,26 @@
             // Mobile navigation toggle - ensure it works on donate page
             const navToggle = document.getElementById('navToggle');
             const navMenu = document.getElementById('navMenu');
-            
+
             function closeMobileMenu() {
                 if (navMenu) navMenu.classList.remove('active');
                 if (navToggle) navToggle.classList.remove('active');
             }
-            
+
             if (navToggle && navMenu) {
                 // Remove any existing event listeners by cloning
                 const newToggle = navToggle.cloneNode(true);
                 navToggle.parentNode.replaceChild(newToggle, navToggle);
-                
+
                 // Now attach fresh listeners
-                newToggle.addEventListener('click', function(e) {
+                newToggle.addEventListener('click', function (e) {
                     e.preventDefault();
                     e.stopPropagation();
                     console.log('Hamburger clicked'); // Debug log
                     navMenu.classList.toggle('active');
                     newToggle.classList.toggle('active');
                 });
-                
+
                 // Close menu when clicking nav links
                 const navLinks = document.querySelectorAll('.nav-link');
                 navLinks.forEach(link => {
@@ -169,18 +201,18 @@
                         closeMobileMenu();
                     });
                 });
-                
+
                 // Close menu when clicking outside
-                document.addEventListener('click', function(e) {
-                    if (navMenu.classList.contains('active') && 
-                        !navMenu.contains(e.target) && 
+                document.addEventListener('click', function (e) {
+                    if (navMenu.classList.contains('active') &&
+                        !navMenu.contains(e.target) &&
                         !newToggle.contains(e.target)) {
                         closeMobileMenu();
                     }
                 });
-                
+
                 // Also handle touch events for mobile
-                newToggle.addEventListener('touchend', function(e) {
+                newToggle.addEventListener('touchend', function (e) {
                     e.preventDefault();
                     e.stopPropagation();
                     navMenu.classList.toggle('active');
@@ -190,76 +222,99 @@
                 console.error('Nav elements not found:', { navToggle, navMenu });
             }
 
-        // Donation functionality
-        const presetBtns = document.querySelectorAll('.preset-btn');
-        const customBtn = document.getElementById('customBtn');
-        const customAmountContainer = document.getElementById('customAmountContainer');
-        const customAmountInput = document.getElementById('customAmount');
-        const donateBtn = document.getElementById('donateBtn');
-        const successMessage = document.getElementById('donateSuccessMessage');
-        const monthlySupport = document.getElementById('monthlySupport');
+            // Donation functionality
+            const presetBtns = document.querySelectorAll('.preset-btn');
+            const customBtn = document.getElementById('customBtn');
+            const customAmountContainer = document.getElementById('customAmountContainer');
+            const customAmountInput = document.getElementById('customAmount');
+            const donateBtn = document.getElementById('donateBtn');
+            const successMessage = document.getElementById('donateSuccessMessage');
+            const monthlySupport = document.getElementById('monthlySupport');
 
-        let selectedAmount = null;
+            let selectedAmount = null;
 
-        presetBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                presetBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
+            presetBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    presetBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
 
-                if (btn.dataset.amount === 'custom') {
-                    customAmountContainer.style.display = 'block';
-                    customAmountInput.focus();
-                    selectedAmount = null;
-                } else {
+                    if (btn.dataset.amount === 'custom') {
+                        customAmountContainer.style.display = 'block';
+                        customAmountInput.focus();
+                        selectedAmount = null;
+                    } else {
+                        customAmountContainer.style.display = 'none';
+                        customAmountInput.value = '';
+                        selectedAmount = parseFloat(btn.dataset.amount);
+                    }
+                });
+            });
+
+            customAmountInput.addEventListener('input', () => {
+                selectedAmount = parseFloat(customAmountInput.value) || null;
+            });
+
+            donateBtn.addEventListener('click', () => {
+                let amount = selectedAmount;
+
+                if (customAmountContainer.style.display === 'block') {
+                    amount = parseFloat(customAmountInput.value);
+                }
+
+                if (!amount || amount <= 0) {
+                    successMessage.textContent = 'Please select or enter a valid donation amount.';
+                    successMessage.className = 'success-message error';
+                    return;
+                }
+
+                // Log donation data
+                const donationData = {
+                    amount: amount,
+                    monthly: monthlySupport ? monthlySupport.checked : false,
+                    timestamp: new Date().toISOString()
+                };
+                console.log('Donation submitted:', donationData);
+
+                // Show success message
+                const cadence = donationData.monthly ? 'each month' : 'today';
+                successMessage.textContent = `Thank you for your donation of €${amount.toFixed(2)} ${donationData.monthly ? 'monthly' : ''}! Your support ${cadence} makes a difference.`;
+                successMessage.className = 'success-message show';
+
+                // Reset form after 3 seconds
+                setTimeout(() => {
+                    presetBtns.forEach(b => b.classList.remove('active'));
                     customAmountContainer.style.display = 'none';
                     customAmountInput.value = '';
-                    selectedAmount = parseFloat(btn.dataset.amount);
-                }
+                    selectedAmount = null;
+                    if (monthlySupport) monthlySupport.checked = false;
+                    successMessage.className = 'success-message';
+                    successMessage.textContent = '';
+                }, 5000);
             });
-        });
-
-        customAmountInput.addEventListener('input', () => {
-            selectedAmount = parseFloat(customAmountInput.value) || null;
-        });
-
-        donateBtn.addEventListener('click', () => {
-            let amount = selectedAmount;
-
-            if (customAmountContainer.style.display === 'block') {
-                amount = parseFloat(customAmountInput.value);
-            }
-
-            if (!amount || amount <= 0) {
-                successMessage.textContent = 'Please select or enter a valid donation amount.';
-                successMessage.className = 'success-message error';
-                return;
-            }
-
-            // Log donation data
-            const donationData = {
-                amount: amount,
-                monthly: monthlySupport ? monthlySupport.checked : false,
-                timestamp: new Date().toISOString()
-            };
-            console.log('Donation submitted:', donationData);
-
-            // Show success message
-            const cadence = donationData.monthly ? 'each month' : 'today';
-            successMessage.textContent = `Thank you for your donation of €${amount.toFixed(2)} ${donationData.monthly ? 'monthly' : ''}! Your support ${cadence} makes a difference.`;
-            successMessage.className = 'success-message show';
-
-            // Reset form after 3 seconds
-            setTimeout(() => {
-                presetBtns.forEach(b => b.classList.remove('active'));
-                customAmountContainer.style.display = 'none';
-                customAmountInput.value = '';
-                selectedAmount = null;
-                if (monthlySupport) monthlySupport.checked = false;
-                successMessage.className = 'success-message';
-                successMessage.textContent = '';
-            }, 5000);
-        });
         }); // End DOMContentLoaded
+    </script>
+
+    <script>
+        const conceptBtn = document.getElementById("conceptBtn");
+        const conceptModal = document.getElementById("conceptModal");
+        const closeModal = document.getElementById("closeModal");
+
+        // 
+        conceptBtn.addEventListener("click", () => {
+            conceptModal.style.display = "block";
+        });
+
+        // 
+        closeModal.addEventListener("click", () => {
+            conceptModal.style.display = "none";
+        });
+
+        // 
+        window.addEventListener("click", (event) => {
+            if (event.target === conceptModal) {
+                conceptModal.style.display = "none";
+            }
+        });
     </script>
 </body>
 

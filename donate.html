@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donate - Redefining Ability</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <!-- Navigation -->
     <nav class="main-nav">
@@ -33,12 +35,13 @@
             <div class="donate-content">
                 <h1 class="page-title fade-in" id="donateTitle">Support Our Athletes</h1>
                 <p class="donate-description fade-in" id="donateDescription">
-                    Your contribution helps Paralympic athletes achieve their goals and inspire millions around the world.
+                    Your contribution helps Paralympic athletes achieve their goals and inspire millions around the
+                    world.
                 </p>
 
                 <div class="donation-form-container slide-up">
                     <h2 class="donation-title">Choose Your Donation Amount</h2>
-                    
+
                     <div class="donation-presets">
                         <button class="preset-btn" data-amount="10">€10</button>
                         <button class="preset-btn" data-amount="25">€25</button>
@@ -48,18 +51,71 @@
 
                     <div class="custom-amount-container" id="customAmountContainer" style="display: none;">
                         <label for="customAmount">Enter Amount (€)</label>
-                        <input type="number" id="customAmount" name="customAmount" min="1" step="0.01" placeholder="0.00">
+                        <input type="number" id="customAmount" name="customAmount" min="1" step="0.01"
+                            placeholder="0.00">
                     </div>
 
                     <div class="subscription-option">
                         <input type="checkbox" id="monthlySupport" name="monthlySupport">
                         <label for="monthlySupport">Support Paralympic athletes every month</label>
-                        <p class="subscription-hint">Monthly gifts fuel ongoing training, media production, and athlete storytelling.</p>
+                        <p class="subscription-hint">Monthly gifts fuel ongoing training, media production, and athlete
+                            storytelling.</p>
                     </div>
 
                     <button type="button" class="btn btn-primary btn-large" id="donateBtn">Donate Now</button>
-                    
+
                     <div class="success-message" id="donateSuccessMessage"></div>
+
+                    <!-- Donation Impact Data Section -->
+                    <section class="donation-impact">
+                        <div class="container">
+                            <h2 class="impact-title">Your Donation Makes a Real Impact</h2>
+                            <p class="impact-intro">
+                                Based on real Paralympic equipment and training costs, here’s what your support can
+                                achieve:
+                            </p>
+
+                            <!-- Cost Visualization Image -->
+                            <div class="impact-image-container">
+                                <img src="data_cost.jpg" alt="Cost Breakdown Chart" class="impact-image">
+                            </div>
+
+                            <section class="featured-impact">
+                                <div class="container">
+
+                                    <!-- €20 / month -->
+                                    <div class="impact-card special">
+                                        <h2>€20 / Month</h2>
+                                        <p>
+                                            <strong>Keep an athlete on track.</strong><br>
+                                            Your monthly gift funds 4–6 physiotherapy sessions every year—
+                                            often the difference between staying in the game or being sidelined by
+                                            injury.
+                                        </p>
+                                    </div>
+
+                                    <!-- €5,000 one-time -->
+                                    <div class="impact-card special">
+                                        <h2>€5,000</h2>
+                                        <p>
+                                            <strong>Give someone their next step.</strong><br>
+                                            €5,000 covers the cost of a basic running blade or up to 60 rehabilitation
+                                            sessions.
+                                            This is not just a donation—it’s mobility, independence, and opportunity.
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </section>
+
+
+
+
+
+
+
+                        </div>
+                    </section>
                 </div>
             </div>
         </div>
@@ -149,7 +205,7 @@
             btn.addEventListener('click', () => {
                 presetBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                
+
                 if (btn.dataset.amount === 'custom') {
                     customAmountContainer.style.display = 'block';
                     customAmountInput.focus();
@@ -168,7 +224,7 @@
 
         donateBtn.addEventListener('click', () => {
             let amount = selectedAmount;
-            
+
             if (customAmountContainer.style.display === 'block') {
                 amount = parseFloat(customAmountInput.value);
             }
@@ -206,5 +262,5 @@
         }); // End DOMContentLoaded
     </script>
 </body>
-</html>
 
+</html>

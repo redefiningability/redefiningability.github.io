@@ -1467,16 +1467,45 @@ body.large-text {
     font-size: 1.3em !important;
 }
 
-body.large-text h1 { font-size: 3em !important; }
-body.large-text h2 { font-size: 2.5em !important; }
-body.large-text h3 { font-size: 2em !important; }
-body.large-text p { font-size: 1.3em !important; }
-body.large-text span { font-size: 1.3em !important; }
-body.large-text a { font-size: 1.3em !important; }
-body.large-text button { font-size: 1.3em !important; }
-body.large-text input { font-size: 1.3em !important; }
-body.large-text textarea { font-size: 1.3em !important; }
-body.large-text label { font-size: 1.3em !important; }
+body.large-text h1 {
+    font-size: 3em !important;
+}
+
+body.large-text h2 {
+    font-size: 2.5em !important;
+}
+
+body.large-text h3 {
+    font-size: 2em !important;
+}
+
+body.large-text p {
+    font-size: 1.3em !important;
+}
+
+body.large-text span {
+    font-size: 1.3em !important;
+}
+
+body.large-text a {
+    font-size: 1.3em !important;
+}
+
+body.large-text button {
+    font-size: 1.3em !important;
+}
+
+body.large-text input {
+    font-size: 1.3em !important;
+}
+
+body.large-text textarea {
+    font-size: 1.3em !important;
+}
+
+body.large-text label {
+    font-size: 1.3em !important;
+}
 
 body.increase-spacing p,
 body.increase-spacing span,
@@ -1847,4 +1876,54 @@ body.reduce-motion *::after {
     .impact-title {
         font-size: 1.3rem;
     }
+}
+
+/* Popup Background */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    padding-top: 80px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.55);
+    text-align: left;
+}
+
+/* Popup Box */
+.modal-content {
+    background: #fff;
+    margin: auto;
+    padding: 25px 30px;
+    border-radius: 14px;
+    width: 90%;
+    max-width: 550px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    animation: popIn 0.35s ease;
+}
+
+/* Pop-in animation */
+@keyframes popIn {
+    0% {
+        transform: scale(0.85);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Close button */
+.close {
+    float: right;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.modal-content ul {
+    margin-left: 20px;
 }

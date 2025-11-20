@@ -230,17 +230,20 @@ const content = {
         {
             episode: "Episode 1",
             title: "Beyond the Podium: Maria's Journey",
-            description: "Training through accessibility challenges and redefining strength."
+            description: "Training through accessibility challenges and redefining strength.",
+            image: "ep1.jpg"
         },
         {
             episode: "Episode 2",
             title: "Voices of Strength: The Power of Community",
-            description: "The role of family, teammates, and allies in athlete resilience."
+            description: "The role of family, teammates, and allies in athlete resilience.",
+            image: "ep2.jpg"
         },
         {
             episode: "Episode 3",
             title: "Future Vision: Inclusive Media for Athletes",
-            description: "Athletes speak about representation and opportunities for the next generation."
+            description: "Athletes speak about representation and opportunities for the next generation.",
+            image: "ep3.jpg"
         }
     ],
     infoCards: [
@@ -568,7 +571,7 @@ document.addEventListener('DOMContentLoaded', function() {
             episodeCard.style.display = index === 0 ? 'block' : 'none';
             episodeCard.innerHTML = `
                 <div class="podcast-image">
-                    <img src="https://via.placeholder.com/400x300?text=Podcast+${index + 1}" alt="${episode.title}" class="podcast-placeholder">
+                    <img src="${episode.image || `ep${index + 1}.jpg`}" alt="${episode.title}" class="podcast-img">
                 </div>
                 <div class="podcast-content">
                     <p class="podcast-episode">${episode.episode}</p>

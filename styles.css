@@ -117,6 +117,14 @@ body {
     cursor: pointer;
     padding: 0.5rem;
     gap: 4px;
+    z-index: 1001;
+    position: relative;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
 }
 
 .nav-toggle span {

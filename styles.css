@@ -1,1060 +1,461 @@
-/* Reset and Base Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+// Content data structure - Based on WhatsApp chat campaign notes
+const content = {
+    hero: {
+        title: "Redefining Ability",
+        subtitle: "See the Story. Support the Strength."
+    },
+    events: [
+        {
+            title: "Milano Cortina 2026 Paralympic Winter Games",
+            location: "Milano-Cortina, Italy · 6–15 March 2026",
+            startDate: "2026-03-06T10:00:00+01:00"
+        },
+        {
+            title: "Los Angeles 2028 Paralympic Games",
+            location: "Los Angeles, USA · 15–27 August 2028",
+            startDate: "2028-08-15T09:00:00-07:00"
+        },
+        {
+            title: "2030 Paralympic Winter Games",
+            location: "Host city TBD · Dates to be confirmed",
+            startDate: "2030-03-01T09:00:00+00:00"
+        }
+    ],
+    aboutSection: {
+        title: "About the Initiative",
+        description: 'Redefining Ability is a multi-platform campaign dedicated to humanising athletes’ stories, challenging stereotypes about disability, and promoting truly inclusive support from both the public and brands. At the heart of the initiative is our podcast–videocast series, "Rising Through", where Paralympic athletes share real, long-form conversations in an open and relaxed setting. These episodes offer an unfiltered look at their journeys, motivations, and experiences—far beyond the headlines.',
+        bullets: [
+            "Educate the public about Paralympic sports and dispel myths around disability",
+            "Engage people by letting them hear directly from athletes through stories and Q&A interactions",
+            "Inspire brands to support inclusivity and long-term partnerships with Paralympic athletes and organisations"
+        ]
+    },
+    media: {
+        trailer: "trailer2.mp4",
+        videos: [
+            {
+                title: "Beyond the Podium: Maria's Journey",
+                description: "Episode 01: Training through accessibility challenges and redefining strength.",
+                url: "https://www.youtube.com/embed/ysz5S6PUM-U"
+            },
+            {
+                title: "Voices of Strength: The Power of Community",
+                description: "Episode 02: The role of family, teammates, and allies in athlete resilience.",
+                url: "https://www.youtube.com/embed/ScMzIvxBSi4"
+            },
+            {
+                title: "Future Vision: Inclusive Media for Athletes",
+                description: "Episode 03: Athletes speak about representation and opportunities for the next generation.",
+                url: "https://www.youtube.com/embed/aqz-KE-bpKQ"
+            }
+        ]
+    },
+    infoCards: [
+        {
+            title: "Educate",
+            description: "We educate the public about Paralympic sports and dispel myths around disability, helping people understand what Paralympic sports are really about."
+        },
+        {
+            title: "Engage",
+            description: "We engage people by letting them hear directly from athletes through stories and Q&A interactions, creating emotional connections through honest conversations."
+        },
+        {
+            title: "Inspire Sponsors",
+            description: "We inspire brands to support inclusivity and long-term partnerships with Paralympic athletes and organisations, connecting brands with values like inclusion and courage."
+        }
+    ],
+    contacts: [
+        {
+            type: "International",
+            name: "International Paralympic Committee",
+            url: "https://www.paralympic.org",
+            description: "The global governing body of the Paralympic Movement"
+        },
+        {
+            type: "National",
+            name: "Portugal National Paralympic Committee",
+            url: "https://www.paralympic.org/portugal",
+            description: "National Paralympic Committee representing Portugal"
+        },
+        {
+            type: "National",
+            name: "Cyprus National Paralympic Committee",
+            url: "https://www.paralympic.org/cyprus",
+            description: "National Paralympic Committee representing Cyprus"
+        },
+        {
+            type: "Regional",
+            name: "European Paralympic Committee",
+            url: "https://www.europaralympic.org",
+            description: "Regional organisation for Paralympic sports in Europe"
+        },
+        {
+            type: "National",
+            name: "ParalympicsGB",
+            url: "https://www.paralympics.org.uk",
+            description: "National Paralympic Committee for Great Britain"
+        }
+    ],
+    donatePage: {
+        title: "Support Paralympic Athletes",
+        description: "Your contribution helps Paralympic athletes in Europe achieve their goals and inspire millions around the world. Support the 'Redefining Ability' campaign and help us create better access, inclusive media representation, and more opportunities for future athletes with disabilities."
+    },
+    askSection: {
+        title: "Ask a Question to an Athlete",
+        description: "Have a question for our Paralympic athletes? Fill out the form below and we'll connect you with an athlete who can share their experience and insights. Your questions help us create meaningful conversations in our 'Voices of Strength' podcast-videocast series."
+    }
+};
 
-:root {
-    --primary-color: #1A1A2E;
-    --secondary-color: #F4A300;
-    --accent-red: #DC143C;
-    --text-dark: #1A1A1A;
-    --text-light: #666666;
-    --bg-light: #F8F9FA;
-    --white: #FFFFFF;
-    --off-white: #FAFAFA;
-    --border-color: #E0E0E0;
-    --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    --shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.12);
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    line-height: 1.6;
-    font-size: 16px;
-    color: var(--text-dark);
-    background-color: var(--white);
-    padding-top: 70px;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* Navigation */
-.main-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background-color: var(--white);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    z-index: 1000;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.nav-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 0;
-}
-
-.nav-logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.nav-logo:hover {
-    color: var(--secondary-color);
-}
-
-.nav-menu {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-}
-
-.nav-link {
-    color: var(--text-dark);
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.95rem;
-    position: relative;
-    transition: color 0.3s ease;
-    padding: 0.5rem 0;
-}
-
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--primary-color);
-    transition: width 0.3s ease;
-}
-
-.nav-link:hover::after,
-.nav-link.active::after {
-    width: 100%;
-}
-
-.nav-link:hover,
-.nav-link.active {
-    color: var(--primary-color);
-}
-
-.nav-toggle {
-    display: none;
-    flex-direction: column;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem;
-    gap: 4px;
-    z-index: 1001;
-    position: relative;
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
-    min-width: 44px;
-    min-height: 44px;
-    align-items: center;
-    justify-content: center;
-}
-
-.nav-toggle span {
-    width: 25px;
-    height: 3px;
-    background-color: var(--text-dark);
-    transition: all 0.3s ease;
-    border-radius: 2px;
-}
-
-/* Hero Section */
-.hero {
-    position: relative;
-    min-height: 90vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--primary-color);
-    color: var(--white);
-    text-align: center;
-    overflow: hidden;
-    margin-top: -70px;
-    padding-top: 70px;
-}
-
-.hero-media {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-}
-
-.hero-media video {
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    object-fit: cover;
-    filter: grayscale(0.25) brightness(0.75) saturate(0.8);
-}
-
-.hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(115deg, rgba(15, 17, 24, 0.65) 0%, rgba(15, 17, 24, 0.55) 45%, rgba(15, 17, 24, 0.35) 100%);
-    mix-blend-mode: multiply;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 1;
-    max-width: 900px;
-    width: 100%;
-    padding: 80px 20px 60px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    gap: 1.5rem;
-    min-height: clamp(480px, 70vh, 620px);
-}
-
-.hero-title {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-}
-
-.hero-subtitle {
-    font-size: clamp(1.1rem, 2vw, 1.5rem);
-    margin-bottom: 2.5rem;
-    opacity: 0.95;
-    font-weight: 300;
-}
-
-.hero-buttons {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding-bottom: 1rem;
-    width: 100%;
-}
-
-@media (max-width: 768px) {
-    .hero-content {
-        padding-top: 50px;
-        min-height: auto;
+// Initialize page content
+document.addEventListener('DOMContentLoaded', function() {
+    // Populate info cards
+    const infoGrid = document.getElementById('infoGrid');
+    if (infoGrid && content.infoCards) {
+        content.infoCards.forEach((card, index) => {
+            const cardElement = document.createElement('div');
+            cardElement.className = 'info-card slide-up';
+            cardElement.style.animationDelay = `${index * 0.1}s`;
+            cardElement.innerHTML = `
+                <h3>${card.title}</h3>
+                <p>${card.description}</p>
+            `;
+            infoGrid.appendChild(cardElement);
+        });
     }
 
-    .hero-buttons {
-        justify-content: center;
-    }
-}
-
-/* Buttons */
-.btn {
-    display: inline-block;
-    padding: 14px 32px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    border: none;
-    cursor: pointer;
-    font-family: inherit;
-}
-
-.btn-primary {
-    background-color: var(--secondary-color);
-    color: var(--white);
-    box-shadow: var(--shadow);
-}
-
-.btn-primary:hover {
-    background-color: #E69400;
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-hover);
-}
-
-.btn-secondary {
-    background-color: transparent;
-    color: var(--white);
-    border: 2px solid var(--white);
-}
-
-.btn-secondary:hover {
-    background-color: var(--white);
-    color: var(--primary-color);
-    transform: translateY(-2px);
-}
-
-.btn-ghost {
-    background-color: rgba(255, 255, 255, 0.15);
-    color: var(--white);
-    border: 2px solid rgba(255, 255, 255, 0.4);
-}
-
-.btn-ghost:hover {
-    background-color: var(--white);
-    color: var(--primary-color);
-}
-
-
-/* Video Section */
-.video-section {
-    padding: 60px 0;
-    background-color: var(--white);
-}
-
-.video-gallery {
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr) auto;
-    align-items: center;
-    gap: 1rem;
-}
-
-.video-nav {
-    background: var(--white);
-    border: 1px solid var(--border-color);
-    border-radius: 50%;
-    width: 48px;
-    height: 48px;
-    font-size: 1.5rem;
-    color: var(--primary-color);
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.video-nav:hover {
-    background-color: var(--primary-color);
-    color: var(--white);
-    transform: translateY(-2px);
-}
-
-.video-container {
-    position: relative;
-    width: 100%;
-    padding-bottom: 56.25%;
-    height: 0;
-    overflow: hidden;
-    border-radius: 12px;
-    box-shadow: var(--shadow);
-}
-
-.video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-
-.video-meta {
-    margin-top: 1.5rem;
-    text-align: center;
-}
-
-.video-meta h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.video-meta p {
-    color: var(--text-light);
-    max-width: 700px;
-    margin: 0 auto;
-}
-
-/* Countdown Section */
-.countdown-section {
-    background-color: var(--off-white);
-    padding: 60px 0;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.countdown-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-}
-
-.eyebrow {
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    font-size: 0.75rem;
-    color: var(--text-light);
-    margin-bottom: 0.5rem;
-}
-
-.countdown-title {
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
-    margin-bottom: 0.5rem;
-}
-
-.countdown-location {
-    color: var(--text-light);
-    font-size: 1rem;
-}
-
-.countdown-grid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(80px, 1fr));
-    gap: 1rem;
-}
-
-.countdown-card {
-    background-color: var(--white);
-    border-radius: 12px;
-    padding: 1.5rem 1rem;
-    text-align: center;
-    box-shadow: var(--shadow);
-}
-
-.countdown-value {
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--primary-color);
-}
-
-.countdown-label {
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    letter-spacing: 0.1em;
-    color: var(--text-light);
-}
-
-/* Video Modal */
-.video-modal {
-    position: fixed;
-    inset: 0;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 2000;
-}
-
-.video-modal.open {
-    display: flex;
-}
-
-.modal-backdrop {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.7);
-}
-
-.video-modal-content {
-    position: relative;
-    background: var(--white);
-    padding: 1rem;
-    border-radius: 16px;
-    max-width: 900px;
-    width: 90%;
-    box-shadow: var(--shadow-hover);
-    z-index: 1;
-}
-
-.video-modal-content iframe,
-.video-modal-content video {
-    width: 100%;
-    height: 500px;
-    border: none;
-    border-radius: 12px;
-}
-
-.modal-close {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 72px;
-    height: 72px;
-    min-width: 72px;
-    min-height: 72px;
-    padding: 0;
-    background: rgba(0, 0, 0, 0.75);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    font-size: 2.5rem;
-    line-height: 1;
-    cursor: pointer;
-    color: var(--white);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
-    touch-action: manipulation;
-    z-index: 1001;
-    user-select: none;
-}
-
-.modal-close:hover,
-.modal-close:focus-visible {
-    background: var(--secondary-color);
-    border-color: var(--secondary-color);
-    color: var(--white);
-    outline: none;
-    transform: scale(1.1);
-}
-
-.modal-close:active {
-    transform: scale(0.95);
-}
-
-.btn-large {
-    padding: 16px 40px;
-    font-size: 1.1rem;
-}
-
-/* Section Styles */
-section {
-    padding: 80px 0;
-}
-
-.section-title {
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 3rem;
-    color: var(--text-dark);
-    letter-spacing: -0.02em;
-}
-
-/* About Section */
-.about-content {
-    max-width: 800px;
-    margin: 0 auto 3rem;
-    text-align: center;
-}
-
-.about-description {
-    font-size: 1.1rem;
-    color: var(--text-light);
-    line-height: 1.8;
-    margin-bottom: 2rem;
-}
-
-.about-bullets {
-    list-style: none;
-    padding: 0;
-    text-align: left;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.about-bullets li {
-    padding: 1rem 0 1rem 2rem;
-    position: relative;
-    color: var(--text-dark);
-    line-height: 1.7;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.about-bullets li:last-child {
-    border-bottom: none;
-}
-
-.about-bullets li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: var(--primary-color);
-    font-weight: 700;
-    font-size: 1.2rem;
-}
-
-/* Information Grid */
-.info-section {
-    background-color: var(--bg-light);
-}
-
-.info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-.info-card {
-    background: var(--white);
-    padding: 2.5rem;
-    border-radius: 12px;
-    box-shadow: var(--shadow);
-    transition: all 0.3s ease;
-}
-
-.info-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-hover);
-}
-
-.info-card h3 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    color: var(--primary-color);
-}
-
-.info-card p {
-    color: var(--text-light);
-    line-height: 1.8;
-}
-
-/* Contacts Section */
-.contacts-section {
-    background-color: var(--white);
-}
-
-.contacts-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-.contact-card {
-    background: var(--bg-light);
-    padding: 2rem;
-    border-radius: 12px;
-    border: 1px solid var(--border-color);
-    transition: all 0.3s ease;
-}
-
-.contact-card:hover {
-    border-color: var(--primary-color);
-    transform: translateY(-3px);
-    box-shadow: var(--shadow);
-}
-
-.contact-card h3 {
-    font-size: 1.3rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: var(--text-dark);
-}
-
-.contact-card .contact-type {
-    font-size: 0.9rem;
-    color: var(--primary-color);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 0.5rem;
-}
-
-.contact-card p {
-    color: var(--text-light);
-    margin: 0.5rem 0;
-}
-
-.contact-card a {
-    color: var(--primary-color);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.contact-card a:hover {
-    color: var(--secondary-color);
-    text-decoration: underline;
-}
-
-.contact-link {
-    display: inline-block;
-    margin-top: 1rem;
-    font-weight: 600;
-    color: var(--primary-color);
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.contact-link:hover {
-    color: var(--secondary-color);
-    transform: translateX(5px);
-}
-
-/* Ask Question Section */
-.ask-section {
-    background-color: var(--bg-light);
-}
-
-.question-form {
-    max-width: 600px;
-    margin: 0 auto;
-    background: var(--white);
-    padding: 3rem;
-    border-radius: 12px;
-    box-shadow: var(--shadow);
-}
-
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-    color: var(--text-dark);
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 12px 16px;
-    border: 2px solid var(--border-color);
-    border-radius: 8px;
-    font-size: 1rem;
-    font-family: inherit;
-    transition: all 0.3s ease;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(0, 133, 195, 0.1);
-}
-
-.form-group textarea {
-    resize: vertical;
-    min-height: 120px;
-}
-
-.error-message {
-    display: block;
-    color: #DC3545;
-    font-size: 0.875rem;
-    margin-top: 0.25rem;
-    min-height: 1.25rem;
-}
-
-.success-message {
-    margin-top: 1.5rem;
-    padding: 1rem;
-    border-radius: 8px;
-    text-align: center;
-    font-weight: 600;
-    display: none;
-}
-
-.success-message.show {
-    display: block;
-    background-color: #D4EDDA;
-    color: #155724;
-    border: 1px solid #C3E6CB;
-}
-
-.success-message.error {
-    background-color: #F8D7DA;
-    color: #721C24;
-    border: 1px solid #F5C6CB;
-}
-
-/* Donate Page */
-.donate-section {
-    padding: 60px 0;
-    min-height: calc(100vh - 200px);
-    background-color: var(--bg-light);
-    margin-top: -70px;
-    padding-top: 130px;
-}
-
-.donate-content {
-    max-width: 700px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.page-title {
-    font-size: clamp(2.5rem, 5vw, 3.5rem);
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    color: var(--text-dark);
-}
-
-.donate-description {
-    font-size: 1.2rem;
-    color: var(--text-light);
-    margin-bottom: 3rem;
-    line-height: 1.8;
-}
-
-.donation-form-container {
-    background: var(--white);
-    padding: 3rem;
-    border-radius: 12px;
-    box-shadow: var(--shadow);
-}
-
-.donation-title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 2rem;
-    color: var(--text-dark);
-}
-
-.donation-presets {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    margin-bottom: 2rem;
-}
-
-.preset-btn {
-    padding: 16px 24px;
-    border: 2px solid var(--border-color);
-    background: var(--white);
-    border-radius: 50px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    color: var(--text-dark);
-    font-family: inherit;
-}
-
-.preset-btn:hover {
-    border-color: var(--primary-color);
-    color: var(--primary-color);
-    transform: translateY(-2px);
-}
-
-.preset-btn.active {
-    background-color: var(--primary-color);
-    color: var(--white);
-    border-color: var(--primary-color);
-}
-
-.custom-amount-container {
-    margin-bottom: 2rem;
-    text-align: left;
-}
-
-.custom-amount-container label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-    color: var(--text-dark);
-}
-
-.custom-amount-container input {
-    width: 100%;
-    padding: 12px 16px;
-    border: 2px solid var(--border-color);
-    border-radius: 8px;
-    font-size: 1.1rem;
-    font-family: inherit;
-    transition: all 0.3s ease;
-}
-
-.custom-amount-container input:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(0, 133, 195, 0.1);
-}
-
-.subscription-option {
-    text-align: left;
-    padding: 1.5rem;
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    background-color: var(--bg-light);
-    margin-bottom: 2rem;
-}
-
-.subscription-option input {
-    width: auto;
-    margin-right: 0.5rem;
-}
-
-.subscription-option label {
-    font-weight: 600;
-    color: var(--text-dark);
-}
-
-.subscription-hint {
-    font-size: 0.9rem;
-    color: var(--text-light);
-    margin-top: 0.5rem;
-}
-
-/* Footer */
-.footer {
-    background-color: var(--text-dark);
-    color: var(--white);
-    text-align: center;
-    padding: 2rem 0;
-}
-
-.footer p {
-    opacity: 0.8;
-}
-
-/* Animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.fade-in {
-    animation: fadeIn 0.8s ease-out;
-}
-
-.slide-up {
-    animation: slideUp 0.8s ease-out;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    body {
-        padding-top: 60px;
+    // Populate about section
+    const aboutSection = document.getElementById('about');
+    if (aboutSection && content.aboutSection) {
+        const aboutContent = document.createElement('div');
+        aboutContent.className = 'about-content slide-up';
+        aboutContent.innerHTML = `
+            <p class="about-description">${content.aboutSection.description}</p>
+            <ul class="about-bullets">
+                ${content.aboutSection.bullets.map(bullet => `<li>${bullet}</li>`).join('')}
+            </ul>
+        `;
+        const infoGrid = document.getElementById('infoGrid');
+        if (infoGrid && infoGrid.parentNode) {
+            infoGrid.parentNode.insertBefore(aboutContent, infoGrid);
+        }
     }
 
-    .nav-menu {
-        position: fixed;
-        top: 60px;
-        left: -100%;
-        flex-direction: column;
-        background-color: var(--white);
-        width: 100%;
-        text-align: center;
-        transition: left 0.3s ease;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        padding: 2rem 0;
-        gap: 0;
+    // Populate contacts
+    const contactsGrid = document.getElementById('contactsGrid');
+    if (contactsGrid && content.contacts) {
+        content.contacts.forEach((contact, index) => {
+            const contactElement = document.createElement('div');
+            contactElement.className = 'contact-card slide-up';
+            contactElement.style.animationDelay = `${index * 0.1}s`;
+            contactElement.innerHTML = `
+                <div class="contact-type">${contact.type}</div>
+                <h3>${contact.name}</h3>
+                ${contact.description ? `<p>${contact.description}</p>` : ''}
+                ${contact.url ? `<a href="${contact.url}" target="_blank" rel="noopener noreferrer" class="contact-link">Visit site →</a>` : ''}
+            `;
+            contactsGrid.appendChild(contactElement);
+        });
     }
 
-    .nav-menu.active {
-        left: 0;
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a.smooth-scroll').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Question form handling
+    const questionForm = document.getElementById('questionForm');
+    if (questionForm) {
+        questionForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const question = document.getElementById('question').value.trim();
+            
+            // Clear previous errors
+            document.querySelectorAll('.error-message').forEach(el => {
+                el.textContent = '';
+            });
+            
+            // Validation
+            let isValid = true;
+            
+            if (!name) {
+                document.getElementById('nameError').textContent = 'Name is required';
+                isValid = false;
+            }
+            
+            if (!email) {
+                document.getElementById('emailError').textContent = 'Email is required';
+                isValid = false;
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                document.getElementById('emailError').textContent = 'Please enter a valid email address';
+                isValid = false;
+            }
+            
+            if (!question) {
+                document.getElementById('questionError').textContent = 'Question is required';
+                isValid = false;
+            }
+            
+            if (!isValid) {
+                return;
+            }
+            
+            // Log form data
+            const formData = {
+                name: name,
+                email: email,
+                question: question,
+                timestamp: new Date().toISOString()
+            };
+            console.log('Question submitted:', formData);
+            
+            // Show success message
+            const successMessage = document.getElementById('successMessage');
+            successMessage.textContent = 'Thank you! Your question has been submitted. We\'ll get back to you soon.';
+            successMessage.className = 'success-message show';
+            
+            // Reset form
+            questionForm.reset();
+            
+            // Scroll to success message
+            successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                successMessage.className = 'success-message';
+                successMessage.textContent = '';
+            }, 5000);
+        });
     }
 
-    .nav-menu li {
-        width: 100%;
-        padding: 0.75rem 0;
+    // Initialize hero content
+    if (content.hero) {
+        const heroTitle = document.getElementById('heroTitle');
+        const heroSubtitle = document.getElementById('heroSubtitle');
+        if (heroTitle) heroTitle.textContent = content.hero.title;
+        if (heroSubtitle) heroSubtitle.textContent = content.hero.subtitle;
     }
 
-    .nav-link {
-        display: block;
-        width: 100%;
-        padding: 0.75rem 0;
+    // Hero trailer setup
+    const heroVideo = document.querySelector('.hero-media video');
+    const openTrailerBtn = document.getElementById('openTrailer');
+    const closeTrailerBtn = document.getElementById('closeTrailer');
+    const videoModal = document.getElementById('videoModal');
+    const modalVideo = document.getElementById('modalTrailer');
+
+    if (content.media?.trailer) {
+        if (heroVideo) {
+            heroVideo.src = content.media.trailer;
+            heroVideo.load();
+            heroVideo.play().catch(() => {});
+        }
+        if (modalVideo) {
+            modalVideo.src = content.media.trailer;
+            modalVideo.load();
+        }
     }
 
-    .nav-toggle {
-        display: flex;
+    function toggleModal(show) {
+        if (!videoModal) return;
+        videoModal.classList.toggle('open', show);
+        videoModal.setAttribute('aria-hidden', show ? 'false' : 'true');
+        if (modalVideo) {
+            if (show) {
+                modalVideo.currentTime = 0;
+                modalVideo.play().catch(() => {});
+            } else {
+                modalVideo.pause();
+                modalVideo.currentTime = 0;
+            }
+        }
     }
 
-    .nav-toggle.active span:nth-child(1) {
-        transform: rotate(45deg) translate(8px, 8px);
+    if (openTrailerBtn) {
+        openTrailerBtn.addEventListener('click', () => toggleModal(true));
+    }
+    if (closeTrailerBtn) {
+        closeTrailerBtn.addEventListener('click', () => toggleModal(false));
+    }
+    if (videoModal) {
+        videoModal.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal-backdrop')) {
+                toggleModal(false);
+            }
+        });
     }
 
-    .nav-toggle.active span:nth-child(2) {
-        opacity: 0;
+    // Countdown setup
+    const getNextEvent = () => {
+        if (Array.isArray(content.events) && content.events.length) {
+            const now = Date.now();
+            const upcoming = content.events
+                .map(event => ({ ...event, timestamp: new Date(event.startDate).getTime() }))
+                .sort((a, b) => a.timestamp - b.timestamp)
+                .find(event => event.timestamp > now);
+            return upcoming || content.events[content.events.length - 1];
+        }
+        return content.event || null;
+    };
+
+    const nextEvent = getNextEvent();
+    if (nextEvent) {
+        const eventTitle = document.getElementById('eventTitle');
+        const eventLocation = document.getElementById('eventLocation');
+        if (eventTitle) eventTitle.textContent = nextEvent.title;
+        if (eventLocation) eventLocation.textContent = nextEvent.location;
+
+        const targetTime = new Date(nextEvent.startDate).getTime();
+        const daysEl = document.getElementById('days');
+        const hoursEl = document.getElementById('hours');
+        const minutesEl = document.getElementById('minutes');
+        const secondsEl = document.getElementById('seconds');
+
+        function updateCountdown() {
+            const now = Date.now();
+            let distance = targetTime - now;
+
+            if (distance < 0) distance = 0;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            if (daysEl) daysEl.textContent = days.toString().padStart(2, '0');
+            if (hoursEl) hoursEl.textContent = hours.toString().padStart(2, '0');
+            if (minutesEl) minutesEl.textContent = minutes.toString().padStart(2, '0');
+            if (secondsEl) secondsEl.textContent = seconds.toString().padStart(2, '0');
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
     }
 
-    .nav-toggle.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(7px, -7px);
+    // Video carousel
+    if (content.media?.videos?.length) {
+        const featureVideo = document.getElementById('featureVideo');
+        const videoTitle = document.getElementById('videoTitle');
+        const videoDescription = document.getElementById('videoDescription');
+        const prevBtn = document.getElementById('videoPrev');
+        const nextBtn = document.getElementById('videoNext');
+        let currentVideo = 0;
+
+        function renderVideo(index) {
+            const video = content.media.videos[index];
+            if (featureVideo) featureVideo.src = `${video.url}?rel=0`;
+            if (videoTitle) videoTitle.textContent = video.title;
+            if (videoDescription) videoDescription.textContent = video.description;
+        }
+
+        if (featureVideo) {
+            renderVideo(currentVideo);
+        }
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                currentVideo = (currentVideo - 1 + content.media.videos.length) % content.media.videos.length;
+                renderVideo(currentVideo);
+            });
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                currentVideo = (currentVideo + 1) % content.media.videos.length;
+                renderVideo(currentVideo);
+            });
+        }
     }
 
-    .hero {
-        min-height: 80vh;
-        margin-top: -60px;
-        padding-top: 60px;
+
+    // Mobile navigation toggle - only on index.html, not donate.html
+    const isDonatePage = window.location.pathname.includes('donate.html');
+    if (!isDonatePage) {
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        function closeMobileMenu() {
+            if (navMenu) navMenu.classList.remove('active');
+            if (navToggle) navToggle.classList.remove('active');
+        }
+        
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                navToggle.classList.toggle('active');
+            });
+            
+            // Close menu when clicking nav links
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    // Small delay to allow smooth scroll to work
+                    setTimeout(() => {
+                        closeMobileMenu();
+                    }, 100);
+                });
+            });
+        }
     }
 
-    section {
-        padding: 60px 0;
+    // Update active nav link on scroll
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section[id]');
+    
+    function updateActiveNav() {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (window.pageYOffset >= sectionTop - 100) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}` || 
+                (current === '' && link.getAttribute('href') === 'index.html')) {
+                link.classList.add('active');
+            }
+        });
     }
 
-    .hero-buttons {
-        flex-direction: column;
-        align-items: stretch;
-    }
+    window.addEventListener('scroll', updateActiveNav);
 
-    .btn {
-        width: 100%;
-        text-align: center;
-    }
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
 
-    .info-grid,
-    .contacts-grid {
-        grid-template-columns: 1fr;
-    }
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
 
-    .question-form,
-    .donation-form-container {
-        padding: 2rem 1.5rem;
-    }
-
-    .donation-presets {
-        grid-template-columns: 1fr;
-    }
-
-    .container {
-        padding: 0 15px;
-    }
-
-    .video-section {
-        padding: 40px 0;
-    }
-
-    .donate-section {
-        margin-top: -60px;
-        padding-top: 120px;
-    }
-
-    .video-gallery {
-        grid-template-columns: 1fr;
-    }
-
-    .video-nav {
-        justify-self: center;
-        order: -1;
-    }
-
-    .video-gallery .video-nav.right {
-        order: 2;
-    }
-
-    .countdown-content {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .countdown-grid {
-        grid-template-columns: repeat(2, minmax(120px, 1fr));
-        width: 100%;
-    }
-
-    .video-modal-content iframe,
-    .video-modal-content video {
-        height: 300px;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-title {
-        font-size: 2rem;
-    }
-
-    .hero-subtitle {
-        font-size: 1rem;
-    }
-
-    .section-title {
-        font-size: 1.75rem;
-    }
-
-    .info-card,
-    .contact-card {
-        padding: 1.5rem;
-    }
-}
-
-/* Accessibility */
-.btn:focus,
-.preset-btn:focus,
-input:focus,
-textarea:focus {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 2px;
-}
-
-/* Smooth scroll offset for fixed headers */
-html {
-    scroll-padding-top: 20px;
-}
+    // Observe elements for scroll animations
+    document.querySelectorAll('.info-card, .contact-card, .section-title, .about-content').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+    });
+});
 

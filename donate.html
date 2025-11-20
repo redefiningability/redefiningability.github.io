@@ -73,21 +73,66 @@
 
     <script src="script.js"></script>
     <script>
-        // Initialize donate page
-        if (typeof content !== 'undefined' && content.donatePage) {
-            document.getElementById('donateTitle').textContent = content.donatePage.title;
-            document.getElementById('donateDescription').textContent = content.donatePage.description;
-        }
+        // Wait for DOM to be ready
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize donate page
+            if (typeof content !== 'undefined' && content.donatePage) {
+                const donateTitle = document.getElementById('donateTitle');
+                const donateDescription = document.getElementById('donateDescription');
+                if (donateTitle) donateTitle.textContent = content.donatePage.title;
+                if (donateDescription) donateDescription.textContent = content.donatePage.description;
+            }
 
-        // Mobile navigation toggle
-        const navToggle = document.getElementById('navToggle');
-        const navMenu = document.getElementById('navMenu');
-        if (navToggle && navMenu) {
-            navToggle.addEventListener('click', () => {
-                navMenu.classList.toggle('active');
-                navToggle.classList.toggle('active');
-            });
-        }
+            // Mobile navigation toggle - ensure it works on donate page
+            const navToggle = document.getElementById('navToggle');
+            const navMenu = document.getElementById('navMenu');
+            
+            function closeMobileMenu() {
+                if (navMenu) navMenu.classList.remove('active');
+                if (navToggle) navToggle.classList.remove('active');
+            }
+            
+            if (navToggle && navMenu) {
+                // Remove any existing event listeners by cloning
+                const newToggle = navToggle.cloneNode(true);
+                navToggle.parentNode.replaceChild(newToggle, navToggle);
+                
+                // Now attach fresh listeners
+                newToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Hamburger clicked'); // Debug log
+                    navMenu.classList.toggle('active');
+                    newToggle.classList.toggle('active');
+                });
+                
+                // Close menu when clicking nav links
+                const navLinks = document.querySelectorAll('.nav-link');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        closeMobileMenu();
+                    });
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (navMenu.classList.contains('active') && 
+                        !navMenu.contains(e.target) && 
+                        !newToggle.contains(e.target)) {
+                        closeMobileMenu();
+                    }
+                });
+                
+                // Also handle touch events for mobile
+                newToggle.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    navMenu.classList.toggle('active');
+                    newToggle.classList.toggle('active');
+                });
+            } else {
+                console.error('Nav elements not found:', { navToggle, navMenu });
+            }
 
         // Donation functionality
         const presetBtns = document.querySelectorAll('.preset-btn');
@@ -158,6 +203,7 @@
                 successMessage.textContent = '';
             }, 5000);
         });
+        }); // End DOMContentLoaded
     </script>
 </body>
 </html>

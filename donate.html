@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate - Redefining Ability</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="nav-logo">Redefining Ability</a>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="index.html#about" class="nav-link">About</a></li>
+                    <li><a href="index.html#contacts" class="nav-link">Resources</a></li>
+                    <li><a href="index.html#ask-question" class="nav-link">Athletes Q&A</a></li>
+                    <li><a href="donate.html" class="nav-link active">Donate</a></li>
+                </ul>
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="donate-section">
+        <div class="container">
+            <div class="donate-content">
+                <h1 class="page-title fade-in" id="donateTitle">Support Our Athletes</h1>
+                <p class="donate-description fade-in" id="donateDescription">
+                    Your contribution helps Paralympic athletes achieve their goals and inspire millions around the world.
+                </p>
+
+                <div class="donation-form-container slide-up">
+                    <h2 class="donation-title">Choose Your Donation Amount</h2>
+                    
+                    <div class="donation-presets">
+                        <button class="preset-btn" data-amount="10">€10</button>
+                        <button class="preset-btn" data-amount="25">€25</button>
+                        <button class="preset-btn" data-amount="50">€50</button>
+                        <button class="preset-btn" data-amount="custom" id="customBtn">Custom</button>
+                    </div>
+
+                    <div class="custom-amount-container" id="customAmountContainer" style="display: none;">
+                        <label for="customAmount">Enter Amount (€)</label>
+                        <input type="number" id="customAmount" name="customAmount" min="1" step="0.01" placeholder="0.00">
+                    </div>
+
+                    <div class="subscription-option">
+                        <input type="checkbox" id="monthlySupport" name="monthlySupport">
+                        <label for="monthlySupport">Support Paralympic athletes every month</label>
+                        <p class="subscription-hint">Monthly gifts fuel ongoing training, media production, and athlete storytelling.</p>
+                    </div>
+
+                    <button type="button" class="btn btn-primary btn-large" id="donateBtn">Donate Now</button>
+                    
+                    <div class="success-message" id="donateSuccessMessage"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Redefining Ability. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Initialize donate page
+        if (typeof content !== 'undefined' && content.donatePage) {
+            document.getElementById('donateTitle').textContent = content.donatePage.title;
+            document.getElementById('donateDescription').textContent = content.donatePage.description;
+        }
+
+        // Mobile navigation toggle
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                navToggle.classList.toggle('active');
+            });
+        }
+
+        // Donation functionality
+        const presetBtns = document.querySelectorAll('.preset-btn');
+        const customBtn = document.getElementById('customBtn');
+        const customAmountContainer = document.getElementById('customAmountContainer');
+        const customAmountInput = document.getElementById('customAmount');
+        const donateBtn = document.getElementById('donateBtn');
+        const successMessage = document.getElementById('donateSuccessMessage');
+        const monthlySupport = document.getElementById('monthlySupport');
+
+        let selectedAmount = null;
+
+        presetBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                presetBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                if (btn.dataset.amount === 'custom') {
+                    customAmountContainer.style.display = 'block';
+                    customAmountInput.focus();
+                    selectedAmount = null;
+                } else {
+                    customAmountContainer.style.display = 'none';
+                    customAmountInput.value = '';
+                    selectedAmount = parseFloat(btn.dataset.amount);
+                }
+            });
+        });
+
+        customAmountInput.addEventListener('input', () => {
+            selectedAmount = parseFloat(customAmountInput.value) || null;
+        });
+
+        donateBtn.addEventListener('click', () => {
+            let amount = selectedAmount;
+            
+            if (customAmountContainer.style.display === 'block') {
+                amount = parseFloat(customAmountInput.value);
+            }
+
+            if (!amount || amount <= 0) {
+                successMessage.textContent = 'Please select or enter a valid donation amount.';
+                successMessage.className = 'success-message error';
+                return;
+            }
+
+            // Log donation data
+            const donationData = {
+                amount: amount,
+                monthly: monthlySupport ? monthlySupport.checked : false,
+                timestamp: new Date().toISOString()
+            };
+            console.log('Donation submitted:', donationData);
+
+            // Show success message
+            const cadence = donationData.monthly ? 'each month' : 'today';
+            successMessage.textContent = `Thank you for your donation of €${amount.toFixed(2)} ${donationData.monthly ? 'monthly' : ''}! Your support ${cadence} makes a difference.`;
+            successMessage.className = 'success-message show';
+
+            // Reset form after 3 seconds
+            setTimeout(() => {
+                presetBtns.forEach(b => b.classList.remove('active'));
+                customAmountContainer.style.display = 'none';
+                customAmountInput.value = '';
+                selectedAmount = null;
+                if (monthlySupport) monthlySupport.checked = false;
+                successMessage.className = 'success-message';
+                successMessage.textContent = '';
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
+

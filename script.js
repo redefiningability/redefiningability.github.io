@@ -36,17 +36,17 @@ const content = {
             {
                 title: "Beyond the Podium: Maria's Journey",
                 description: "Episode 01: Training through accessibility challenges and redefining strength.",
-                url: "https://www.youtube.com/embed/ysz5S6PUM-U"
+                url: "https://www.youtube.com"
             },
             {
                 title: "Voices of Strength: The Power of Community",
                 description: "Episode 02: The role of family, teammates, and allies in athlete resilience.",
-                url: "https://www.youtube.com/embed/ScMzIvxBSi4"
+                url: "https://www.youtube.com"
             },
             {
                 title: "Future Vision: Inclusive Media for Athletes",
                 description: "Episode 03: Athletes speak about representation and opportunities for the next generation.",
-                url: "https://www.youtube.com/embed/aqz-KE-bpKQ"
+                url: "https://www.youtube.com"
             }
         ]
     },
@@ -458,4 +458,5 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
 });
+
 

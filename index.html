@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redefining Ability - Paralympic Campaign</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="nav-logo">
+                    <img src="logo2.jpg" alt="Redefining Ability Logo" class="nav-logo-img">
+                    <span>Redefining Ability</span>
+                </a>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link smooth-scroll">About</a></li>
+                    <li><a href="#contacts" class="nav-link smooth-scroll">Resources</a></li>
+                    <li><a href="#ask-question" class="nav-link smooth-scroll">Athletes Q&A</a></li>
+                    <li><a href="donate.html" class="nav-link">Donate</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <button class="accessibility-toggle" id="accessibilityToggle" aria-label="Accessibility options" aria-haspopup="true" aria-expanded="false">
+                        <img src="accesibility_icon.jpg" alt="Accessibility" class="accessibility-icon">
+                    </button>
+                    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Accessibility Panel -->
+    <div class="accessibility-panel" id="accessibilityPanel" role="dialog" aria-labelledby="accessibilityTitle" aria-hidden="true">
+        <h3 id="accessibilityTitle">Accessibility Options</h3>
+        <div class="accessibility-option">
+            <label>
+                <input type="checkbox" id="largeText">
+                <span>Larger Text</span>
+            </label>
+        </div>
+        <div class="accessibility-option">
+            <label>
+                <input type="checkbox" id="increaseSpacing">
+                <span>Increase Word Spacing</span>
+            </label>
+        </div>
+        <div class="accessibility-option">
+            <label>
+                <input type="checkbox" id="screenReader">
+                <span>Screen Reader Friendly</span>
+            </label>
+        </div>
+        <div class="accessibility-option">
+            <label>
+                <input type="checkbox" id="reduceMotion">
+                <span>Reduce Motion</span>
+            </label>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-media">
+            <video autoplay muted loop playsinline>
+                <source src="trailer2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title fade-in" id="heroTitle">Redefining Ability</h1>
+            <p class="hero-subtitle fade-in" id="heroSubtitle">See the Story. Support the Strength.</p>
+            <div class="hero-buttons fade-in">
+                <a href="#ask-question" class="btn btn-secondary smooth-scroll">Ask a Question</a>
+                <a href="donate.html" class="btn btn-primary">Donate</a>
+                <button class="btn btn-ghost" id="openTrailer">Watch Trailer</button>
+            </div>
+        </div>
+        <div class="hero-overlay"></div>
+    </section>
+
+    <div class="video-modal" id="videoModal" aria-hidden="true">
+        <div class="video-modal-content">
+            <button class="modal-close" id="closeTrailer" aria-label="Close trailer">&times;</button>
+            <video id="modalTrailer" controls>
+                <source src="trailer2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="modal-backdrop"></div>
+    </div>
+
+    <!-- Countdown Section -->
+    <section class="countdown-section" id="countdown">
+        <div class="container">
+            <div class="countdown-content">
+                <div>
+                    <p class="eyebrow">Next Paralympic Highlight</p>
+                    <h2 class="countdown-title" id="eventTitle">Milano Cortina 2026 Paralympic Winter Games</h2>
+                    <p class="countdown-location" id="eventLocation">Milano-Cortina, Italy · 6–15 March 2026</p>
+                </div>
+                <div class="countdown-grid" id="countdownGrid">
+                    <div class="countdown-card">
+                        <span class="countdown-value" id="days">00</span>
+                        <span class="countdown-label">Days</span>
+                    </div>
+                    <div class="countdown-card">
+                        <span class="countdown-value" id="hours">00</span>
+                        <span class="countdown-label">Hours</span>
+                    </div>
+                    <div class="countdown-card">
+                        <span class="countdown-value" id="minutes">00</span>
+                        <span class="countdown-label">Minutes</span>
+                    </div>
+                    <div class="countdown-card">
+                        <span class="countdown-value" id="seconds">00</span>
+                        <span class="countdown-label">Seconds</span>
+                    </div>
+                </div>
+                <div class="countdown-actions">
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary" id="buyTicketsBtn">Buy Tickets</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section" id="videoGallery">
+        <div class="container">
+            <div class="video-gallery">
+                <button class="video-nav left" id="videoPrev" aria-label="Previous video">&#10094;</button>
+                <div class="video-container">
+                    <iframe 
+                        id="featureVideo"
+                        src="" 
+                        title="Redefining Ability Feature"
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <button class="video-nav right" id="videoNext" aria-label="Next video">&#10095;</button>
+            </div>
+            <div class="video-meta">
+                <h3 id="videoTitle"></h3>
+                <p id="videoDescription"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Information Grid Section -->
+    <section class="info-section" id="about">
+        <div class="container">
+            <h2 class="section-title slide-up">About the Initiative</h2>
+            <div class="info-grid" id="infoGrid">
+                <!-- Cards will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Paralympic Contacts & Resources -->
+    <section class="contacts-section" id="contacts">
+        <div class="container">
+            <h2 class="section-title slide-up">Paralympic Contacts & Resources</h2>
+            <div class="contacts-grid" id="contactsGrid">
+                <!-- Contacts will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Ask a Question Form -->
+    <section class="ask-section" id="ask-question">
+        <div class="container">
+            <h2 class="section-title slide-up">Ask a Question to an Athlete</h2>
+            <form class="question-form" id="questionForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                    <span class="error-message" id="nameError"></span>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                    <span class="error-message" id="emailError"></span>
+                </div>
+                <div class="form-group">
+                    <label for="question">Your Question</label>
+                    <textarea id="question" name="question" rows="5"></textarea>
+                    <span class="error-message" id="questionError"></span>
+                </div>
+                <div class="form-group">
+                    <label>Or Record Your Question</label>
+                    <div class="recording-options">
+                        <button type="button" class="btn btn-secondary" id="recordVoiceBtn">
+                            <span>🎤</span> Record Voice
+                        </button>
+                        <button type="button" class="btn btn-secondary" id="recordVideoBtn">
+                            <span>📹</span> Record Video
+                        </button>
+                    </div>
+                    <div id="recordingStatus" class="recording-status"></div>
+                    <div id="recordingPreview" class="recording-preview"></div>
+                    <input type="hidden" id="audioRecording" name="audioRecording">
+                    <input type="hidden" id="videoRecording" name="videoRecording">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit Question</button>
+                <div class="success-message" id="successMessage"></div>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Redefining Ability. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate - Redefining Ability</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="nav-logo">
+                    <img src="logo2.jpg" alt="Redefining Ability Logo" class="nav-logo-img">
+                    <span>Redefining Ability</span>
+                </a>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="index.html#about" class="nav-link">About</a></li>
+                    <li><a href="index.html#contacts" class="nav-link">Resources</a></li>
+                    <li><a href="index.html#ask-question" class="nav-link">Athletes Q&A</a></li>
+                    <li><a href="donate.html" class="nav-link active">Donate</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <button class="accessibility-toggle" id="accessibilityToggle" aria-label="Accessibility options" aria-haspopup="true" aria-expanded="false">
+                        <img src="accesibility_icon.jpg" alt="Accessibility" class="accessibility-icon">
+                    </button>
+                    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Accessibility Panel -->
+    <div class="accessibility-panel" id="accessibilityPanel" role="dialog" aria-labelledby="accessibilityTitle" aria-hidden="true">
+        <h3 id="accessibilityTitle">Accessibility Options</h3>
+        <div class="accessibility-option">
+            <label>
+                <input type="checkbox" id="largeText">
+                <span>Larger Text</span>
+            </label>
+        </div>
+        <div class="accessibility-option">
+            <label>
+                <input type="checkbox" id="increaseSpacing">
+                <span>Increase Word Spacing</span>
+            </label>
+        </div>
+        <div class="accessibility-option">
+            <label>
+                <input type="checkbox" id="screenReader">
+                <span>Screen Reader Friendly</span>
+            </label>
+        </div>
+        <div class="accessibility-option">
+            <label>
+                <input type="checkbox" id="reduceMotion">
+                <span>Reduce Motion</span>
+            </label>
+        </div>
+    </div>
+
+    <section class="donate-section">
+        <div class="container">
+            <div class="donate-content">
+                <h1 class="page-title fade-in" id="donateTitle">Support Our Athletes</h1>
+                <p class="donate-description fade-in" id="donateDescription">
+                    Your contribution helps Paralympic athletes achieve their goals and inspire millions around the
+                    world.
+                </p>
+
+                <div class="donation-form-container slide-up">
+                    <h2 class="donation-title">Choose Your Donation Amount</h2>
+
+                    <div class="donation-presets">
+                        <button class="preset-btn" data-amount="10">€10</button>
+                        <button class="preset-btn" data-amount="25">€25</button>
+                        <button class="preset-btn" data-amount="50">€50</button>
+                        <button class="preset-btn" data-amount="custom" id="customBtn">Custom</button>
+                    </div>
+
+                    <div class="custom-amount-container" id="customAmountContainer" style="display: none;">
+                        <label for="customAmount">Enter Amount (€)</label>
+                        <input type="number" id="customAmount" name="customAmount" min="1" step="0.01"
+                            placeholder="0.00">
+                    </div>
+
+                    <div class="subscription-option">
+                        <input type="checkbox" id="monthlySupport" name="monthlySupport">
+                        <label for="monthlySupport">Support Paralympic athletes every month</label>
+                        <p class="subscription-hint">Monthly gifts fuel ongoing training, media production, and athlete
+                            storytelling.</p>
+                    </div>
+
+                    <button type="button" class="btn btn-primary btn-large" id="donateBtn">Donate Now</button>
+
+                    <div class="success-message" id="donateSuccessMessage"></div>
+
+                    <!-- Donation Impact Data Section -->
+                    <section class="donation-impact">
+                        <div class="container">
+                            <h2 class="impact-title">Your Donation Makes a Real Impact</h2>
+                            <p class="impact-intro">
+                                Based on real Paralympic equipment and training costs, here’s what your support can
+                                achieve:
+                            </p>
+
+                            <!-- Cost Visualization Image -->
+                            <div class="impact-image-container">
+                                <img src="data_cost.jpg" alt="Cost Breakdown Chart showing equipment and training costs for Paralympic athletes" class="impact-image">
+                            </div>
+
+                            <section class="featured-impact">
+                                <div class="container">
+
+                                    <!-- €20 / month -->
+                                    <div class="impact-card special">
+                                        <h2>€20 / Month</h2>
+                                        <p>
+                                            <strong>Keep an athlete on track.</strong><br>
+                                            Your monthly gift funds 4–6 physiotherapy sessions every year—
+                                            often the difference between staying in the game or being sidelined by
+                                            injury.
+                                        </p>
+                                    </div>
+
+                                    <!-- €5,000 one-time -->
+                                    <div class="impact-card special">
+                                        <h2>€5,000</h2>
+                                        <p>
+                                            <strong>Give someone their next step.</strong><br>
+                                            €5,000 covers the cost of a basic running blade or up to 60 rehabilitation
+                                            sessions.
+                                            This is not just a donation—it’s mobility, independence, and opportunity.
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </section>
+
+
+
+
+
+
+
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Redefining Ability. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Wait for DOM to be ready
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize donate page
+            if (typeof content !== 'undefined' && content.donatePage) {
+                const donateTitle = document.getElementById('donateTitle');
+                const donateDescription = document.getElementById('donateDescription');
+                if (donateTitle) donateTitle.textContent = content.donatePage.title;
+                if (donateDescription) donateDescription.textContent = content.donatePage.description;
+            }
+
+            // Mobile navigation toggle - ensure it works on donate page
+            const navToggle = document.getElementById('navToggle');
+            const navMenu = document.getElementById('navMenu');
+            
+            function closeMobileMenu() {
+                if (navMenu) navMenu.classList.remove('active');
+                if (navToggle) navToggle.classList.remove('active');
+            }
+            
+            if (navToggle && navMenu) {
+                // Remove any existing event listeners by cloning
+                const newToggle = navToggle.cloneNode(true);
+                navToggle.parentNode.replaceChild(newToggle, navToggle);
+                
+                // Now attach fresh listeners
+                newToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Hamburger clicked'); // Debug log
+                    navMenu.classList.toggle('active');
+                    newToggle.classList.toggle('active');
+                });
+                
+                // Close menu when clicking nav links
+                const navLinks = document.querySelectorAll('.nav-link');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        closeMobileMenu();
+                    });
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (navMenu.classList.contains('active') && 
+                        !navMenu.contains(e.target) && 
+                        !newToggle.contains(e.target)) {
+                        closeMobileMenu();
+                    }
+                });
+                
+                // Also handle touch events for mobile
+                newToggle.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    navMenu.classList.toggle('active');
+                    newToggle.classList.toggle('active');
+                });
+            } else {
+                console.error('Nav elements not found:', { navToggle, navMenu });
+            }
+
+            // Accessibility Panel
+            const accessibilityToggle = document.getElementById('accessibilityToggle');
+            const accessibilityPanel = document.getElementById('accessibilityPanel');
+            const largeTextCheck = document.getElementById('largeText');
+            const increaseSpacingCheck = document.getElementById('increaseSpacing');
+            const screenReaderCheck = document.getElementById('screenReader');
+            const reduceMotionCheck = document.getElementById('reduceMotion');
+
+            // Load saved preferences
+            const savedPrefs = JSON.parse(localStorage.getItem('accessibilityPrefs') || '{}');
+            
+            function applyAccessibilityPrefs() {
+                if (savedPrefs.largeText && largeTextCheck) {
+                    document.body.classList.add('large-text');
+                    largeTextCheck.checked = true;
+                }
+                if (savedPrefs.increaseSpacing && increaseSpacingCheck) {
+                    document.body.classList.add('increase-spacing');
+                    increaseSpacingCheck.checked = true;
+                }
+                if (savedPrefs.screenReader && screenReaderCheck) {
+                    document.body.setAttribute('aria-live', 'polite');
+                    document.body.setAttribute('role', 'main');
+                    screenReaderCheck.checked = true;
+                }
+                if (savedPrefs.reduceMotion && reduceMotionCheck) {
+                    document.body.classList.add('reduce-motion');
+                    reduceMotionCheck.checked = true;
+                }
+            }
+
+            applyAccessibilityPrefs();
+
+            if (accessibilityToggle && accessibilityPanel) {
+                accessibilityToggle.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const isOpen = accessibilityPanel.classList.toggle('open');
+                    accessibilityToggle.setAttribute('aria-expanded', isOpen);
+                    accessibilityPanel.setAttribute('aria-hidden', !isOpen);
+                });
+
+                // Close panel when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (accessibilityPanel.classList.contains('open') && 
+                        !accessibilityPanel.contains(e.target) && 
+                        !accessibilityToggle.contains(e.target)) {
+                        accessibilityPanel.classList.remove('open');
+                        accessibilityToggle.setAttribute('aria-expanded', 'false');
+                        accessibilityPanel.setAttribute('aria-hidden', 'true');
+                    }
+                });
+
+                // Large text toggle
+                if (largeTextCheck) {
+                    largeTextCheck.addEventListener('change', (e) => {
+                        document.body.classList.toggle('large-text', e.target.checked);
+                        savedPrefs.largeText = e.target.checked;
+                        localStorage.setItem('accessibilityPrefs', JSON.stringify(savedPrefs));
+                    });
+                }
+
+                // Increase word spacing toggle
+                if (increaseSpacingCheck) {
+                    increaseSpacingCheck.addEventListener('change', (e) => {
+                        document.body.classList.toggle('increase-spacing', e.target.checked);
+                        savedPrefs.increaseSpacing = e.target.checked;
+                        localStorage.setItem('accessibilityPrefs', JSON.stringify(savedPrefs));
+                    });
+                }
+
+                // Screen reader toggle
+                if (screenReaderCheck) {
+                    screenReaderCheck.addEventListener('change', (e) => {
+                        if (e.target.checked) {
+                            document.body.setAttribute('aria-live', 'polite');
+                            document.body.setAttribute('role', 'main');
+                        } else {
+                            document.body.removeAttribute('aria-live');
+                            document.body.removeAttribute('role');
+                        }
+                        savedPrefs.screenReader = e.target.checked;
+                        localStorage.setItem('accessibilityPrefs', JSON.stringify(savedPrefs));
+                    });
+                }
+
+                // Reduce motion toggle
+                if (reduceMotionCheck) {
+                    reduceMotionCheck.addEventListener('change', (e) => {
+                        document.body.classList.toggle('reduce-motion', e.target.checked);
+                        savedPrefs.reduceMotion = e.target.checked;
+                        localStorage.setItem('accessibilityPrefs', JSON.stringify(savedPrefs));
+                    });
+                }
+            }
+
+        // Donation functionality
+        const presetBtns = document.querySelectorAll('.preset-btn');
+        const customBtn = document.getElementById('customBtn');
+        const customAmountContainer = document.getElementById('customAmountContainer');
+        const customAmountInput = document.getElementById('customAmount');
+        const donateBtn = document.getElementById('donateBtn');
+        const successMessage = document.getElementById('donateSuccessMessage');
+        const monthlySupport = document.getElementById('monthlySupport');
+
+        let selectedAmount = null;
+
+        presetBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                presetBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                if (btn.dataset.amount === 'custom') {
+                    customAmountContainer.style.display = 'block';
+                    customAmountInput.focus();
+                    selectedAmount = null;
+                } else {
+                    customAmountContainer.style.display = 'none';
+                    customAmountInput.value = '';
+                    selectedAmount = parseFloat(btn.dataset.amount);
+                }
+            });
+        });
+
+        customAmountInput.addEventListener('input', () => {
+            selectedAmount = parseFloat(customAmountInput.value) || null;
+        });
+
+        donateBtn.addEventListener('click', () => {
+            let amount = selectedAmount;
+
+            if (customAmountContainer.style.display === 'block') {
+                amount = parseFloat(customAmountInput.value);
+            }
+
+            if (!amount || amount <= 0) {
+                successMessage.textContent = 'Please select or enter a valid donation amount.';
+                successMessage.className = 'success-message error';
+                return;
+            }
+
+            // Log donation data
+            const donationData = {
+                amount: amount,
+                monthly: monthlySupport ? monthlySupport.checked : false,
+                timestamp: new Date().toISOString()
+            };
+            console.log('Donation submitted:', donationData);
+
+            // Show success message
+            const cadence = donationData.monthly ? 'each month' : 'today';
+            successMessage.textContent = `Thank you for your donation of €${amount.toFixed(2)} ${donationData.monthly ? 'monthly' : ''}! Your support ${cadence} makes a difference.`;
+            successMessage.className = 'success-message show';
+
+            // Reset form after 3 seconds
+            setTimeout(() => {
+                presetBtns.forEach(b => b.classList.remove('active'));
+                customAmountContainer.style.display = 'none';
+                customAmountInput.value = '';
+                selectedAmount = null;
+                if (monthlySupport) monthlySupport.checked = false;
+                successMessage.className = 'success-message';
+                successMessage.textContent = '';
+            }, 5000);
+        });
+        }); // End DOMContentLoaded
+    </script>
+</body>
+
+</html>

@@ -23,7 +23,7 @@ const content = {
     ],
     aboutSection: {
         title: "About the Initiative",
-        description: 'Redefining Ability is a multi-platform campaign dedicated to humanising athletes’ stories, challenging stereotypes about disability, and promoting truly inclusive support from both the public and brands. At the heart of the initiative is our podcast–videocast series, "Rising Through", where Paralympic athletes share real, long-form conversations in an open and relaxed setting. These episodes offer an unfiltered look at their journeys, motivations, and experiences—far beyond the headlines.',
+        description: 'Redefining Ability is a multi-platform campaign dedicated to humanising athletes’ stories, challenging stereotypes about disability, and promoting truly inclusive support from both the public and brands. At the heart of the initiative is our podcast–videocast series, where Paralympic athletes share real, long-form conversations in an open and relaxed setting. These episodes offer an unfiltered look at their journeys, motivations, and experiences—far beyond the headlines.',
         bullets: [
             "Educate the public about Paralympic sports and dispel myths around disability",
             "Engage people by letting them hear directly from athletes through stories and Q&A interactions",
@@ -107,7 +107,7 @@ const content = {
 };
 
 // Initialize page content
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Populate info cards
     const infoGrid = document.getElementById('infoGrid');
     if (infoGrid && content.infoCards) {
@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Smooth scroll for anchor links
     document.querySelectorAll('a.smooth-scroll').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             const targetElement = document.querySelector(targetId);
@@ -175,27 +175,27 @@ document.addEventListener('DOMContentLoaded', function() {
     // Question form handling
     const questionForm = document.getElementById('questionForm');
     if (questionForm) {
-        questionForm.addEventListener('submit', function(e) {
+        questionForm.addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             // Get form values
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
             const question = document.getElementById('question').value.trim();
-            
+
             // Clear previous errors
             document.querySelectorAll('.error-message').forEach(el => {
                 el.textContent = '';
             });
-            
+
             // Validation
             let isValid = true;
-            
+
             if (!name) {
                 document.getElementById('nameError').textContent = 'Name is required';
                 isValid = false;
             }
-            
+
             if (!email) {
                 document.getElementById('emailError').textContent = 'Email is required';
                 isValid = false;
@@ -203,16 +203,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.getElementById('emailError').textContent = 'Please enter a valid email address';
                 isValid = false;
             }
-            
+
             if (!question) {
                 document.getElementById('questionError').textContent = 'Question is required';
                 isValid = false;
             }
-            
+
             if (!isValid) {
                 return;
             }
-            
+
             // Log form data
             const formData = {
                 name: name,
@@ -221,18 +221,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 timestamp: new Date().toISOString()
             };
             console.log('Question submitted:', formData);
-            
+
             // Show success message
             const successMessage = document.getElementById('successMessage');
             successMessage.textContent = 'Thank you! Your question has been submitted. We\'ll get back to you soon.';
             successMessage.className = 'success-message show';
-            
+
             // Reset form
             questionForm.reset();
-            
+
             // Scroll to success message
             successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            
+
             // Hide success message after 5 seconds
             setTimeout(() => {
                 successMessage.className = 'success-message';
@@ -260,7 +260,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (heroVideo) {
             heroVideo.src = content.media.trailer;
             heroVideo.load();
-            heroVideo.play().catch(() => {});
+            heroVideo.play().catch(() => { });
         }
         if (modalVideo) {
             modalVideo.src = content.media.trailer;
@@ -275,7 +275,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (modalVideo) {
             if (show) {
                 modalVideo.currentTime = 0;
-                modalVideo.play().catch(() => {});
+                modalVideo.play().catch(() => { });
             } else {
                 modalVideo.pause();
                 modalVideo.currentTime = 0;
@@ -385,18 +385,18 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!isDonatePage) {
         const navToggle = document.getElementById('navToggle');
         const navMenu = document.getElementById('navMenu');
-        
+
         function closeMobileMenu() {
             if (navMenu) navMenu.classList.remove('active');
             if (navToggle) navToggle.classList.remove('active');
         }
-        
+
         if (navToggle && navMenu) {
             navToggle.addEventListener('click', () => {
                 navMenu.classList.toggle('active');
                 navToggle.classList.toggle('active');
             });
-            
+
             // Close menu when clicking nav links
             const navLinks = document.querySelectorAll('.nav-link');
             navLinks.forEach(link => {
@@ -413,7 +413,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Update active nav link on scroll
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('section[id]');
-    
+
     function updateActiveNav() {
         let current = '';
         sections.forEach(section => {
@@ -426,7 +426,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         navLinks.forEach(link => {
             link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}` || 
+            if (link.getAttribute('href') === `#${current}` ||
                 (current === '' && link.getAttribute('href') === 'index.html')) {
                 link.classList.add('active');
             }
@@ -441,7 +441,7 @@ document.addEventListener('DOMContentLoaded', function() {
         rootMargin: '0px 0px -50px 0px'
     };
 
-    const observer = new IntersectionObserver(function(entries) {
+    const observer = new IntersectionObserver(function (entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.style.opacity = '1';

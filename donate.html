@@ -25,8 +25,8 @@
                     <li><a href="donate.html" class="nav-link active">Donate</a></li>
                 </ul>
                 <div class="nav-actions">
-                    <button class="accessibility-toggle" id="accessibilityToggle" aria-label="Accessibility options" aria-haspopup="true" aria-expanded="false">
-                        <img src="accesibility_icon.jpg" alt="Accessibility" class="accessibility-icon">
+                    <button class="language-toggle" id="languageToggle" aria-label="Change language">
+                        <span id="currentLang">EN</span>
                     </button>
                     <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
                         <span></span>
@@ -80,9 +80,9 @@
                     <h2 class="donation-title">Choose Your Donation Amount</h2>
 
                     <div class="donation-presets">
+                        <button class="preset-btn" data-amount="5">€5</button>
                         <button class="preset-btn" data-amount="10">€10</button>
-                        <button class="preset-btn" data-amount="25">€25</button>
-                        <button class="preset-btn" data-amount="50">€50</button>
+                        <button class="preset-btn" data-amount="20">€20</button>
                         <button class="preset-btn" data-amount="custom" id="customBtn">Custom</button>
                     </div>
 
@@ -164,6 +164,11 @@
         </div>
     </footer>
 
+    <!-- Accessibility Button - Bottom Right -->
+    <button class="accessibility-toggle-fixed" id="accessibilityToggle" aria-label="Accessibility options" aria-haspopup="true" aria-expanded="false">
+        <img src="accesibility_icon.jpg" alt="Accessibility" class="accessibility-icon-fixed">
+    </button>
+
     <script src="script.js"></script>
     <script>
         // Wait for DOM to be ready
@@ -174,6 +179,72 @@
                 const donateDescription = document.getElementById('donateDescription');
                 if (donateTitle) donateTitle.textContent = content.donatePage.title;
                 if (donateDescription) donateDescription.textContent = content.donatePage.description;
+            }
+
+            // Language Toggle and Translation for Donate Page
+            const languageToggle = document.getElementById('languageToggle');
+            const currentLangSpan = document.getElementById('currentLang');
+            let currentLanguage = localStorage.getItem('siteLanguage') || 'EN';
+
+            function translateDonatePage(lang) {
+                const t = donateTranslations[lang];
+                if (!t) return;
+
+                document.documentElement.lang = lang.toLowerCase();
+
+                // Navigation
+                const navLinks = document.querySelectorAll('.nav-link');
+                if (navLinks.length >= 5) {
+                    navLinks[0].textContent = t.nav.home;
+                    navLinks[1].textContent = t.nav.about;
+                    navLinks[2].textContent = t.nav.resources;
+                    navLinks[3].textContent = t.nav.qa;
+                    navLinks[4].textContent = t.nav.donate;
+                }
+
+                // Donate page content
+                const donateTitle = document.getElementById('donateTitle');
+                const donateDescription = document.getElementById('donateDescription');
+                const selectAmountLabel = document.querySelector('.donation-section h3');
+                const customAmountLabel = document.querySelector('label[for="customAmount"]');
+                const monthlyLabel = document.querySelector('label[for="monthlySubscription"]');
+                const donateBtn = document.querySelector('.donate-button');
+                const impactTitle = document.querySelector('.impact-title');
+                const impactIntro = document.querySelector('.impact-intro');
+                const footer = document.querySelector('.footer p');
+
+                if (donateTitle) donateTitle.textContent = t.title;
+                if (donateDescription) donateDescription.textContent = t.description;
+                if (selectAmountLabel) selectAmountLabel.textContent = t.selectAmount;
+                if (customAmountLabel) customAmountLabel.textContent = t.customAmount;
+                if (monthlyLabel) monthlyLabel.textContent = t.monthlySubscription;
+                if (donateBtn) donateBtn.textContent = t.donateNow;
+                if (impactTitle) impactTitle.textContent = t.impactTitle;
+                if (impactIntro) impactIntro.textContent = t.impactIntro;
+                if (footer) footer.textContent = t.footer;
+
+                // Accessibility panel
+                const accTitle = document.getElementById('accessibilityTitle');
+                const accLabels = document.querySelectorAll('.accessibility-option label span');
+                if (accTitle) accTitle.textContent = translations[lang].accessibility.title;
+                if (accLabels.length >= 4) {
+                    accLabels[0].textContent = translations[lang].accessibility.largerText;
+                    accLabels[1].textContent = translations[lang].accessibility.increaseSpacing;
+                    accLabels[2].textContent = translations[lang].accessibility.screenReader;
+                    accLabels[3].textContent = translations[lang].accessibility.reduceMotion;
+                }
+            }
+
+            if (languageToggle && currentLangSpan) {
+                currentLangSpan.textContent = currentLanguage;
+                translateDonatePage(currentLanguage);
+                
+                languageToggle.addEventListener('click', () => {
+                    currentLanguage = currentLanguage === 'EN' ? 'PT' : 'EN';
+                    currentLangSpan.textContent = currentLanguage;
+                    localStorage.setItem('siteLanguage', currentLanguage);
+                    translateDonatePage(currentLanguage);
+                });
             }
 
             // Mobile navigation toggle - ensure it works on donate page

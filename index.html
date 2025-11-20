@@ -23,8 +23,8 @@
                     <li><a href="donate.html" class="nav-link">Donate</a></li>
                 </ul>
                 <div class="nav-actions">
-                    <button class="accessibility-toggle" id="accessibilityToggle" aria-label="Accessibility options" aria-haspopup="true" aria-expanded="false">
-                        <img src="accesibility_icon.jpg" alt="Accessibility" class="accessibility-icon">
+                    <button class="language-toggle" id="languageToggle" aria-label="Change language">
+                        <span id="currentLang">EN</span>
                     </button>
                     <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
                         <span></span>
@@ -79,7 +79,6 @@
             <div class="hero-buttons fade-in">
                 <a href="#ask-question" class="btn btn-secondary smooth-scroll">Ask a Question</a>
                 <a href="donate.html" class="btn btn-primary">Donate</a>
-                <button class="btn btn-ghost" id="openTrailer">Watch Trailer</button>
             </div>
         </div>
         <div class="hero-overlay"></div>
@@ -130,26 +129,16 @@
         </div>
     </section>
 
-    <!-- Video Section -->
-    <section class="video-section" id="videoGallery">
+    <!-- Podcast Section -->
+    <section class="podcast-section" id="podcast">
         <div class="container">
-            <div class="video-gallery">
-                <button class="video-nav left" id="videoPrev" aria-label="Previous video">&#10094;</button>
-                <div class="video-container">
-                    <iframe 
-                        id="featureVideo"
-                        src="" 
-                        title="Redefining Ability Feature"
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                    </iframe>
+            <h2 class="section-title">Podcast Episodes</h2>
+            <div class="podcast-carousel">
+                <button class="podcast-nav left" id="podcastPrev" aria-label="Previous episode">&#10094;</button>
+                <div class="podcast-container" id="podcastContainer">
+                    <!-- Episodes will be populated by JavaScript -->
                 </div>
-                <button class="video-nav right" id="videoNext" aria-label="Next video">&#10095;</button>
-            </div>
-            <div class="video-meta">
-                <h3 id="videoTitle"></h3>
-                <p id="videoDescription"></p>
+                <button class="podcast-nav right" id="podcastNext" aria-label="Next episode">&#10095;</button>
             </div>
         </div>
     </section>
@@ -209,7 +198,9 @@
                     <input type="hidden" id="audioRecording" name="audioRecording">
                     <input type="hidden" id="videoRecording" name="videoRecording">
                 </div>
-                <button type="submit" class="btn btn-primary">Submit Question</button>
+                <div class="form-submit-wrapper">
+                    <button type="submit" class="btn btn-primary">Submit Question</button>
+                </div>
                 <div class="success-message" id="successMessage"></div>
             </form>
         </div>
@@ -220,6 +211,11 @@
             <p>&copy; 2025 Redefining Ability. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Accessibility Button - Bottom Right -->
+    <button class="accessibility-toggle-fixed" id="accessibilityToggle" aria-label="Accessibility options" aria-haspopup="true" aria-expanded="false">
+        <img src="accesibility_icon.jpg" alt="Accessibility" class="accessibility-icon-fixed">
+    </button>
 
     <script src="script.js"></script>
 </body>

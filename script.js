@@ -1,3 +1,193 @@
+// Translations
+const translations = {
+    EN: {
+        nav: {
+            home: "Home",
+            about: "About",
+            resources: "Resources",
+            qa: "Athletes Q&A",
+            donate: "Donate"
+        },
+        hero: {
+            title: "Redefining Ability",
+            subtitle: "See the Story. Support the Strength."
+        },
+        buttons: {
+            askQuestion: "Ask a Question",
+            donate: "Donate",
+            buyTickets: "Buy Tickets",
+            submitQuestion: "Submit Question"
+        },
+        countdown: {
+            eyebrow: "Next Paralympic Highlight",
+            days: "Days",
+            hours: "Hours",
+            minutes: "Minutes",
+            seconds: "Seconds"
+        },
+        about: {
+            title: "About the Initiative",
+            description: "Redefining Ability is a multi-platform campaign dedicated to humanising athletes' stories, challenging stereotypes about disability, and promoting truly inclusive support from both the public and brands. At the heart of the initiative is our podcast–videocast series, where Paralympic athletes share real, long-form conversations in an open and relaxed setting. These episodes offer an unfiltered look at their journeys, motivations, and experiences—far beyond the headlines.",
+            bullets: [
+                "Educate the public about Paralympic sports and dispel myths around disability",
+                "Engage people by letting them hear directly from athletes through stories and Q&A interactions",
+                "Inspire brands to support inclusivity and long-term partnerships with Paralympic athletes and organisations"
+            ]
+        },
+        infoCards: {
+            educate: {
+                title: "Educate",
+                description: "We educate the public about Paralympic sports and dispel myths around disability, helping people understand what Paralympic sports are really about."
+            },
+            engage: {
+                title: "Engage",
+                description: "We engage people by letting them hear directly from athletes through stories and Q&A interactions, creating emotional connections through honest conversations."
+            },
+            inspire: {
+                title: "Inspire Sponsors",
+                description: "We inspire brands to support inclusivity and long-term partnerships with Paralympic athletes and organisations, connecting brands with values like inclusion and courage."
+            }
+        },
+        contacts: {
+            title: "Paralympic Contacts & Resources",
+            visitSite: "Visit site →"
+        },
+        podcast: {
+            title: "Podcast Episodes"
+        },
+        askSection: {
+            title: "Ask a Question to an Athlete",
+            description: "Have a question for our Paralympic athletes? Fill out the form below and we'll connect you with an athlete who can share their experience and insights. Your questions help us create meaningful conversations in our 'Voices of Strength' podcast-videocast series.",
+            name: "Name",
+            email: "Email",
+            question: "Your Question",
+            recordVoice: "Record Voice",
+            recordVideo: "Record Video"
+        },
+        accessibility: {
+            title: "Accessibility Options",
+            largerText: "Larger Text",
+            increaseSpacing: "Increase Word Spacing",
+            screenReader: "Screen Reader Friendly",
+            reduceMotion: "Reduce Motion"
+        },
+        footer: "© 2025 Redefining Ability. All rights reserved."
+    },
+    PT: {
+        nav: {
+            home: "Início",
+            about: "Sobre",
+            resources: "Recursos",
+            qa: "Perguntas aos Atletas",
+            donate: "Doar"
+        },
+        hero: {
+            title: "Redefinir Capacidade",
+            subtitle: "Veja a História. Apoie a Força."
+        },
+        buttons: {
+            askQuestion: "Fazer uma Pergunta",
+            donate: "Doar",
+            buyTickets: "Comprar Bilhetes",
+            submitQuestion: "Enviar Pergunta"
+        },
+        countdown: {
+            eyebrow: "Próximo Destaque Paralímpico",
+            days: "Dias",
+            hours: "Horas",
+            minutes: "Minutos",
+            seconds: "Segundos"
+        },
+        about: {
+            title: "Sobre a Iniciativa",
+            description: "Redefinir Capacidade é uma campanha multiplataforma dedicada a humanizar as histórias dos atletas, desafiar estereótipos sobre deficiência e promover apoio verdadeiramente inclusivo tanto do público quanto das marcas. No centro da iniciativa está a nossa série de podcast-videocast, onde atletas paralímpicos partilham conversas reais e longas num ambiente aberto e descontraído. Estes episódios oferecem um olhar sem filtros sobre as suas jornadas, motivações e experiências—muito além das manchetes.",
+            bullets: [
+                "Educar o público sobre desportos paralímpicos e dissipar mitos sobre deficiência",
+                "Envolver as pessoas permitindo que ouçam diretamente dos atletas através de histórias e interações de perguntas e respostas",
+                "Inspirar marcas a apoiar a inclusividade e parcerias de longo prazo com atletas e organizações paralímpicas"
+            ]
+        },
+        infoCards: {
+            educate: {
+                title: "Educar",
+                description: "Educamos o público sobre desportos paralímpicos e dissipamos mitos sobre deficiência, ajudando as pessoas a entender o que os desportos paralímpicos realmente são."
+            },
+            engage: {
+                title: "Envolver",
+                description: "Envolvemos as pessoas permitindo que ouçam diretamente dos atletas através de histórias e interações de perguntas e respostas, criando conexões emocionais através de conversas honestas."
+            },
+            inspire: {
+                title: "Inspirar Patrocinadores",
+                description: "Inspiramos marcas a apoiar a inclusividade e parcerias de longo prazo com atletas e organizações paralímpicas, conectando marcas com valores como inclusão e coragem."
+            }
+        },
+        contacts: {
+            title: "Contactos e Recursos Paralímpicos",
+            visitSite: "Visitar site →"
+        },
+        podcast: {
+            title: "Episódios do Podcast"
+        },
+        askSection: {
+            title: "Fazer uma Pergunta a um Atleta",
+            description: "Tem uma pergunta para os nossos atletas paralímpicos? Preencha o formulário abaixo e conectaremos com um atleta que pode partilhar a sua experiência e perspetivas. As suas perguntas ajudam-nos a criar conversas significativas na nossa série de podcast-videocast 'Voices of Strength'.",
+            name: "Nome",
+            email: "Email",
+            question: "A sua Pergunta",
+            recordVoice: "Gravar Voz",
+            recordVideo: "Gravar Vídeo"
+        },
+        accessibility: {
+            title: "Opções de Acessibilidade",
+            largerText: "Texto Maior",
+            increaseSpacing: "Aumentar Espaçamento entre Palavras",
+            screenReader: "Compatível com Leitor de Ecrã",
+            reduceMotion: "Reduzir Movimento"
+        },
+        footer: "© 2025 Redefinir Capacidade. Todos os direitos reservados."
+    }
+};
+
+// Donate page translations
+const donateTranslations = {
+    EN: {
+        nav: {
+            home: "Home",
+            about: "About",
+            resources: "Resources",
+            qa: "Athletes Q&A",
+            donate: "Donate"
+        },
+        title: "Support Paralympic Athletes",
+        description: "Your contribution helps Paralympic athletes in Europe achieve their goals and inspire millions around the world. Support the 'Redefining Ability' campaign and help us create better access, inclusive media representation, and more opportunities for future athletes with disabilities.",
+        selectAmount: "Select Amount",
+        customAmount: "Custom Amount",
+        monthlySubscription: "Make this a monthly donation",
+        donateNow: "Donate Now",
+        impactTitle: "Your Donation Makes a Real Impact",
+        impactIntro: "Based on real Paralympic equipment and training costs, here's what your support can achieve:",
+        footer: "© 2025 Redefining Ability. All rights reserved."
+    },
+    PT: {
+        nav: {
+            home: "Início",
+            about: "Sobre",
+            resources: "Recursos",
+            qa: "Perguntas aos Atletas",
+            donate: "Doar"
+        },
+        title: "Apoiar Atletas Paralímpicos",
+        description: "A sua contribuição ajuda os atletas paralímpicos na Europa a alcançar os seus objetivos e a inspirar milhões em todo o mundo. Apoie a campanha 'Redefinir Capacidade' e ajude-nos a criar melhor acesso, representação mediática inclusiva e mais oportunidades para futuros atletas com deficiência.",
+        selectAmount: "Selecionar Valor",
+        customAmount: "Valor Personalizado",
+        monthlySubscription: "Tornar esta uma doação mensal",
+        donateNow: "Doar Agora",
+        impactTitle: "A Sua Doação Tem um Impacto Real",
+        impactIntro: "Com base nos custos reais de equipamento e treino paralímpico, eis o que o seu apoio pode alcançar:",
+        footer: "© 2025 Redefinir Capacidade. Todos os direitos reservados."
+    }
+};
+
 // Content data structure - Based on WhatsApp chat campaign notes
 const content = {
     hero: {
@@ -7,8 +197,8 @@ const content = {
     events: [
         {
             title: "Milano Cortina 2026 Paralympic Winter Games",
-            location: "Milano-Cortina, Italy · 6–15 March 2026",
-            startDate: "2026-03-06T10:00:00+01:00",
+            location: "Milano-Cortina, Italy · 7–15 March 2026",
+            startDate: "2026-03-07T10:00:00+01:00",
             ticketUrl: "https://www.paralympic.org/milano-cortina-2026/tickets"
         },
         {
@@ -34,25 +224,25 @@ const content = {
         ]
     },
     media: {
-        trailer: "trailer2.mp4",
-        videos: [
-            {
-                title: "Beyond the Podium: Maria's Journey",
-                description: "Episode 01: Training through accessibility challenges and redefining strength.",
-                url: "https://www.youtube.com/embed/ysz5S6PUM-U"
-            },
-            {
-                title: "Voices of Strength: The Power of Community",
-                description: "Episode 02: The role of family, teammates, and allies in athlete resilience.",
-                url: "https://www.youtube.com/embed/ScMzIvxBSi4"
-            },
-            {
-                title: "Future Vision: Inclusive Media for Athletes",
-                description: "Episode 03: Athletes speak about representation and opportunities for the next generation.",
-                url: "https://www.youtube.com/embed/aqz-KE-bpKQ"
-            }
-        ]
+        trailer: "trailer2.mp4"
     },
+    podcastEpisodes: [
+        {
+            episode: "Episode 1",
+            title: "Beyond the Podium: Maria's Journey",
+            description: "Training through accessibility challenges and redefining strength."
+        },
+        {
+            episode: "Episode 2",
+            title: "Voices of Strength: The Power of Community",
+            description: "The role of family, teammates, and allies in athlete resilience."
+        },
+        {
+            episode: "Episode 3",
+            title: "Future Vision: Inclusive Media for Athletes",
+            description: "Athletes speak about representation and opportunities for the next generation."
+        }
+    ],
     infoCards: [
         {
             title: "Educate",
@@ -364,24 +554,56 @@ document.addEventListener('DOMContentLoaded', function() {
         setInterval(updateCountdown, 1000);
     }
 
-    // Video carousel - leave empty placeholders
-    const featureVideo = document.getElementById('featureVideo');
-    const videoTitle = document.getElementById('videoTitle');
-    const videoDescription = document.getElementById('videoDescription');
-    const prevBtn = document.getElementById('videoPrev');
-    const nextBtn = document.getElementById('videoNext');
-    
-    // Video carousel functionality (empty placeholders for now)
-    if (prevBtn) {
-        prevBtn.addEventListener('click', () => {
-            // Placeholder for previous video
-        });
-    }
+    // Podcast Episodes Carousel
+    const podcastContainer = document.getElementById('podcastContainer');
+    const podcastPrev = document.getElementById('podcastPrev');
+    const podcastNext = document.getElementById('podcastNext');
+    let currentPodcastIndex = 0;
 
-    if (nextBtn) {
-        nextBtn.addEventListener('click', () => {
-            // Placeholder for next video
+    if (podcastContainer && content.podcastEpisodes) {
+        // Create all podcast cards
+        content.podcastEpisodes.forEach((episode, index) => {
+            const episodeCard = document.createElement('div');
+            episodeCard.className = 'podcast-card';
+            episodeCard.style.display = index === 0 ? 'block' : 'none';
+            episodeCard.innerHTML = `
+                <div class="podcast-image">
+                    <img src="https://via.placeholder.com/400x300?text=Podcast+${index + 1}" alt="${episode.title}" class="podcast-placeholder">
+                </div>
+                <div class="podcast-content">
+                    <p class="podcast-episode">${episode.episode}</p>
+                    <h3 class="podcast-title">${episode.title}</h3>
+                    <p class="podcast-description">${episode.description}</p>
+                </div>
+            `;
+            podcastContainer.appendChild(episodeCard);
         });
+
+        // Navigation functions
+        function showPodcast(index) {
+            const cards = podcastContainer.querySelectorAll('.podcast-card');
+            if (cards.length === 0) return;
+            
+            currentPodcastIndex = index;
+            if (currentPodcastIndex < 0) currentPodcastIndex = cards.length - 1;
+            if (currentPodcastIndex >= cards.length) currentPodcastIndex = 0;
+            
+            cards.forEach((card, i) => {
+                card.style.display = i === currentPodcastIndex ? 'block' : 'none';
+            });
+        }
+
+        if (podcastPrev) {
+            podcastPrev.addEventListener('click', () => {
+                showPodcast(currentPodcastIndex - 1);
+            });
+        }
+
+        if (podcastNext) {
+            podcastNext.addEventListener('click', () => {
+                showPodcast(currentPodcastIndex + 1);
+            });
+        }
     }
 
 
@@ -439,6 +661,134 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     window.addEventListener('scroll', updateActiveNav);
+
+    // Language Toggle and Translation
+    const languageToggle = document.getElementById('languageToggle');
+    const currentLangSpan = document.getElementById('currentLang');
+    let currentLanguage = localStorage.getItem('siteLanguage') || 'EN';
+
+    function translatePage(lang) {
+        const t = translations[lang];
+        if (!t) return;
+
+        // Update HTML lang attribute
+        document.documentElement.lang = lang.toLowerCase();
+
+        // Navigation
+        const navLinks = document.querySelectorAll('.nav-link');
+        if (navLinks.length >= 5) {
+            navLinks[0].textContent = t.nav.home;
+            navLinks[1].textContent = t.nav.about;
+            navLinks[2].textContent = t.nav.resources;
+            navLinks[3].textContent = t.nav.qa;
+            navLinks[4].textContent = t.nav.donate;
+        }
+
+        // Hero
+        const heroTitle = document.getElementById('heroTitle');
+        const heroSubtitle = document.getElementById('heroSubtitle');
+        if (heroTitle) heroTitle.textContent = t.hero.title;
+        if (heroSubtitle) heroSubtitle.textContent = t.hero.subtitle;
+
+        // Hero buttons
+        const heroButtons = document.querySelectorAll('.hero-buttons .btn');
+        if (heroButtons.length >= 2) {
+            heroButtons[0].textContent = t.buttons.askQuestion;
+            heroButtons[1].textContent = t.buttons.donate;
+        }
+
+        // Countdown
+        const countdownEyebrow = document.querySelector('.eyebrow');
+        const countdownLabels = document.querySelectorAll('.countdown-label');
+        const buyTicketsBtn = document.getElementById('buyTicketsBtn');
+        if (countdownEyebrow) countdownEyebrow.textContent = t.countdown.eyebrow;
+        if (countdownLabels.length >= 4) {
+            countdownLabels[0].textContent = t.countdown.days;
+            countdownLabels[1].textContent = t.countdown.hours;
+            countdownLabels[2].textContent = t.countdown.minutes;
+            countdownLabels[3].textContent = t.countdown.seconds;
+        }
+        if (buyTicketsBtn) buyTicketsBtn.textContent = t.buttons.buyTickets;
+
+        // About section
+        const aboutTitle = document.querySelector('#about .section-title');
+        const aboutDescription = document.querySelector('.about-description');
+        const aboutBullets = document.querySelectorAll('.about-bullets li');
+        if (aboutTitle) aboutTitle.textContent = t.about.title;
+        if (aboutDescription) aboutDescription.textContent = t.about.description;
+        if (aboutBullets.length >= 3) {
+            aboutBullets.forEach((bullet, index) => {
+                if (t.about.bullets[index]) bullet.textContent = t.about.bullets[index];
+            });
+        }
+
+        // Info cards
+        const infoCardTitles = document.querySelectorAll('.info-card h3');
+        const infoCardDescriptions = document.querySelectorAll('.info-card p');
+        if (infoCardTitles.length >= 3 && infoCardDescriptions.length >= 3) {
+            infoCardTitles[0].textContent = t.infoCards.educate.title;
+            infoCardDescriptions[0].textContent = t.infoCards.educate.description;
+            infoCardTitles[1].textContent = t.infoCards.engage.title;
+            infoCardDescriptions[1].textContent = t.infoCards.engage.description;
+            infoCardTitles[2].textContent = t.infoCards.inspire.title;
+            infoCardDescriptions[2].textContent = t.infoCards.inspire.description;
+        }
+
+        // Contacts section
+        const contactsTitle = document.querySelector('#contacts .section-title');
+        const visitSiteLinks = document.querySelectorAll('.contact-link');
+        if (contactsTitle) contactsTitle.textContent = t.contacts.title;
+        visitSiteLinks.forEach(link => {
+            link.textContent = t.contacts.visitSite;
+        });
+
+        // Podcast section
+        const podcastTitle = document.querySelector('#podcast .section-title');
+        if (podcastTitle) podcastTitle.textContent = t.podcast.title;
+
+        // Ask section
+        const askTitle = document.querySelector('#ask-question .section-title');
+        const nameLabel = document.querySelector('label[for="name"]');
+        const emailLabel = document.querySelector('label[for="email"]');
+        const questionLabel = document.querySelector('label[for="question"]');
+        const submitBtn = document.querySelector('#questionForm button[type="submit"]');
+        const recordVoiceBtn = document.getElementById('recordVoiceBtn');
+        const recordVideoBtn = document.getElementById('recordVideoBtn');
+        if (askTitle) askTitle.textContent = t.askSection.title;
+        if (nameLabel) nameLabel.textContent = t.askSection.name;
+        if (emailLabel) emailLabel.textContent = t.askSection.email;
+        if (questionLabel) questionLabel.textContent = t.askSection.question;
+        if (submitBtn) submitBtn.textContent = t.buttons.submitQuestion;
+        if (recordVoiceBtn) recordVoiceBtn.innerHTML = `<span>🎤</span> ${t.askSection.recordVoice}`;
+        if (recordVideoBtn) recordVideoBtn.innerHTML = `<span>📹</span> ${t.askSection.recordVideo}`;
+
+        // Accessibility panel
+        const accTitle = document.getElementById('accessibilityTitle');
+        const accLabels = document.querySelectorAll('.accessibility-option label span');
+        if (accTitle) accTitle.textContent = t.accessibility.title;
+        if (accLabels.length >= 4) {
+            accLabels[0].textContent = t.accessibility.largerText;
+            accLabels[1].textContent = t.accessibility.increaseSpacing;
+            accLabels[2].textContent = t.accessibility.screenReader;
+            accLabels[3].textContent = t.accessibility.reduceMotion;
+        }
+
+        // Footer
+        const footer = document.querySelector('.footer p');
+        if (footer) footer.textContent = t.footer;
+    }
+
+    if (languageToggle && currentLangSpan) {
+        currentLangSpan.textContent = currentLanguage;
+        translatePage(currentLanguage);
+        
+        languageToggle.addEventListener('click', () => {
+            currentLanguage = currentLanguage === 'EN' ? 'PT' : 'EN';
+            currentLangSpan.textContent = currentLanguage;
+            localStorage.setItem('siteLanguage', currentLanguage);
+            translatePage(currentLanguage);
+        });
+    }
 
     // Intersection Observer for scroll animations
     const observerOptions = {

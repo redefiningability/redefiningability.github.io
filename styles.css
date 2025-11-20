@@ -29,7 +29,7 @@ body {
     font-size: 16px;
     color: var(--text-dark);
     background-color: var(--white);
-    padding-top: 70px;
+    padding-top: 90px;
 }
 
 .container {
@@ -54,7 +54,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 0;
+    padding: 1.25rem 0;
 }
 
 .nav-logo {
@@ -73,7 +73,7 @@ body {
 }
 
 .nav-logo-img {
-    height: 40px;
+    height: 2rem;
     width: auto;
     object-fit: contain;
     background: transparent;
@@ -144,32 +144,62 @@ body {
     gap: 0.5rem;
 }
 
-.accessibility-toggle {
-    background: none;
-    border: none;
+.language-toggle {
+    background: var(--white);
+    border: 2px solid var(--border-color);
     cursor: pointer;
-    padding: 0.5rem;
+    padding: 0.5rem 1rem;
     color: var(--text-dark);
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: color 0.3s ease, transform 0.2s ease;
+    transition: all 0.3s ease;
     border-radius: 8px;
-    min-width: 44px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    min-width: 50px;
     min-height: 44px;
-    touch-action: manipulation;
 }
 
-.accessibility-toggle:hover,
-.accessibility-toggle:focus {
+.language-toggle:hover,
+.language-toggle:focus {
+    border-color: var(--primary-color);
     color: var(--primary-color);
-    background-color: rgba(0, 0, 0, 0.05);
     outline: none;
 }
 
-.accessibility-icon {
-    width: 24px;
-    height: 24px;
+/* Accessibility Button - Fixed Bottom Right */
+.accessibility-toggle-fixed {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid var(--primary-color);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: all 0.3s ease;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.accessibility-toggle-fixed:hover,
+.accessibility-toggle-fixed:focus {
+    background: var(--white);
+    border-color: var(--secondary-color);
+    transform: scale(1.1);
+    outline: none;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.accessibility-icon-fixed {
+    width: 40px;
+    height: 40px;
     object-fit: contain;
     display: block;
 }
@@ -193,8 +223,8 @@ body {
     color: var(--white);
     text-align: center;
     overflow: hidden;
-    margin-top: -70px;
-    padding-top: 70px;
+    margin-top: -90px;
+    padding-top: 90px;
 }
 
 .hero-media {
@@ -385,6 +415,105 @@ body {
     color: var(--text-light);
     max-width: 700px;
     margin: 0 auto;
+}
+
+/* Podcast Section */
+.podcast-section {
+    padding: 80px 0;
+    background-color: var(--white);
+}
+
+.podcast-carousel {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.podcast-nav {
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    flex-shrink: 0;
+}
+
+.podcast-nav:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.podcast-container {
+    position: relative;
+    width: 100%;
+    min-height: 400px;
+}
+
+.podcast-card {
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.podcast-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.podcast-image {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    background-color: var(--bg-light);
+}
+
+.podcast-placeholder {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.podcast-content {
+    padding: 2rem;
+    text-align: center;
+}
+
+.podcast-episode {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.75rem;
+}
+
+.podcast-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.podcast-description {
+    font-size: 1rem;
+    color: var(--text-light);
+    line-height: 1.6;
 }
 
 /* Countdown Section */
@@ -717,6 +846,12 @@ section {
     box-shadow: var(--shadow);
 }
 
+.form-submit-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
 .form-group {
     margin-bottom: 1.5rem;
 }
@@ -765,6 +900,21 @@ section {
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: 2px solid var(--primary-color);
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+}
+
+.recording-options .btn:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: var(--white);
+}
+
+.recording-options .btn span {
+    font-size: 1.2em;
 }
 
 .recording-status {
@@ -1017,12 +1167,12 @@ section {
 /* Responsive Design */
 @media (max-width: 768px) {
     body {
-        padding-top: 60px;
+        padding-top: 90px;
     }
 
     .nav-menu {
         position: fixed;
-        top: 60px;
+        top: 90px;
         left: -100%;
         flex-direction: column;
         background-color: var(--white);
@@ -1057,15 +1207,24 @@ section {
         display: flex;
     }
 
-    .accessibility-toggle {
-        min-width: 40px;
+    .language-toggle {
+        min-width: 45px;
         min-height: 40px;
+        padding: 0.4rem 0.6rem;
+        font-size: 0.85rem;
+    }
+
+    .accessibility-toggle-fixed {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
         padding: 0.4rem;
     }
 
-    .accessibility-icon {
-        width: 20px;
-        height: 20px;
+    .accessibility-icon-fixed {
+        width: 32px;
+        height: 32px;
     }
 
     .nav-toggle.active span:nth-child(1) {
@@ -1082,8 +1241,8 @@ section {
 
     .hero {
         min-height: 80vh;
-        margin-top: -60px;
-        padding-top: 60px;
+        margin-top: -90px;
+        padding-top: 90px;
     }
 
     section {
@@ -1118,26 +1277,39 @@ section {
         padding: 0 15px;
     }
 
-    .video-section {
-        padding: 40px 0;
+    .podcast-section {
+        padding: 60px 0;
+    }
+
+    .podcast-carousel {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .podcast-nav {
+        justify-self: center;
+        order: -1;
+    }
+
+    .podcast-carousel .podcast-nav.right {
+        order: 2;
+    }
+
+    .podcast-container {
+        min-height: 350px;
+    }
+
+    .podcast-image {
+        height: 250px;
+    }
+
+    .podcast-content {
+        padding: 1.5rem;
     }
 
     .donate-section {
         margin-top: -60px;
         padding-top: 120px;
-    }
-
-    .video-gallery {
-        grid-template-columns: 1fr;
-    }
-
-    .video-nav {
-        justify-self: center;
-        order: -1;
-    }
-
-    .video-gallery .video-nav.right {
-        order: 2;
     }
 
     .countdown-content {
@@ -1192,8 +1364,8 @@ html {
 /* Accessibility Panel */
 .accessibility-panel {
     position: fixed;
-    top: 80px;
-    right: 20px;
+    bottom: 110px;
+    right: 30px;
     width: 320px;
     max-width: calc(100vw - 40px);
     background-color: var(--white);
@@ -1263,12 +1435,19 @@ html {
 
 /* Accessibility states */
 body.large-text {
-    font-size: 1.2em;
+    font-size: 1.3em !important;
 }
 
-body.large-text h1 { font-size: 2.5em; }
-body.large-text h2 { font-size: 2em; }
-body.large-text h3 { font-size: 1.75em; }
+body.large-text h1 { font-size: 3em !important; }
+body.large-text h2 { font-size: 2.5em !important; }
+body.large-text h3 { font-size: 2em !important; }
+body.large-text p { font-size: 1.3em !important; }
+body.large-text span { font-size: 1.3em !important; }
+body.large-text a { font-size: 1.3em !important; }
+body.large-text button { font-size: 1.3em !important; }
+body.large-text input { font-size: 1.3em !important; }
+body.large-text textarea { font-size: 1.3em !important; }
+body.large-text label { font-size: 1.3em !important; }
 
 body.increase-spacing p,
 body.increase-spacing span,
@@ -1312,7 +1491,7 @@ body.reduce-motion *::after {
 
 @media (max-width: 768px) {
     .accessibility-panel {
-        top: 70px;
+        bottom: 90px;
         right: 10px;
         left: 10px;
         width: auto;
